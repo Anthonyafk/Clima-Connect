@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Datos del Tiempo</title>
+</head>
+<body>
+    <h1>Datos del Tiempo para {{ ciudad }}</h1>
+    <p><strong>Temperatura:</strong> {{ temperatura_celsius }}°C</p>
+    <p><strong>Humedad:</strong> {{ data.main.humidity }}%</p>
+    <p><strong>Clima:</strong> {{ data.weather[0].description }}</p>
+    <p><strong>Presión:</strong> {{ data.main.pressure }} hPa</p>
+</body>
+</html>
+
