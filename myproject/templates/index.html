@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pronóstico del Clima</title>
+</head>
+<body>
+    <h1>Pronóstico del Clima</h1>
+    
+    <form method="POST">
+        <label for="ciudad">Ciudad:</label>
+        <input type="text" id="ciudad" name="ciudad" placeholder="Ejemplo: Paris" required>
+        <button type="submit">Obtener Pronóstico</button>
+    </form>
+
+    <!-- Mostrar los datos del tiempo aquí -->
+    <div>
+        {% if data %}
+            <h2>Pronóstico del clima para {{ ciudad }}</h2>
+            <p><strong>Temperatura: {{ temperatura_celsius }} °C</p>
+            <p><strong>Humedad:</strong> {{ data.main.humidity }}%</p>
+            <p><strong>Descripción: {{ data['weather'][0]['description'] }}</p>
+            <p><strong>Presión:</strong> {{ data.main.pressure }} hPa</p>
+        {% endif %}
+    </div>
+</body>
+</html>
