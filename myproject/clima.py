@@ -8,8 +8,11 @@ api_key = '36a510e66cf5393e1e5e2e70c2aad861'
 
 @app.route("/", methods=["GET", "POST"])
 def obtener_datos_del_tiempo():
-    ciudad = "Tokyo"  # Ciudad por defecto
-    pais = "jp"  # País por defecto
+    ciudad = "Tokyo"  # Ciudad predeterminada
+    pais = "jp" # Pais por defecto
+    
+    if request.method == "POST":
+        ciudad = request.form.get("ciudad")
     
     if request.method == "POST":
         ciudad = request.form.get("ciudad")
@@ -32,4 +35,3 @@ def obtener_datos_del_tiempo():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
