@@ -1,0 +1,2 @@
+# config.py
+OPENWEATHER_API_KEY = '36a510e66cf5393e1e5e2e70c2aad861'
