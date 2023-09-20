@@ -1,10 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <meta charset="UTF-8">
     <title>Pronóstico del Clima</title>
+    <style>
+        /* Estilo para las imágenes en las esquinas inferiores */
+        .imagen-esquina-izquierda {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+
+        .imagen-esquina-derecha {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+        }
+
+        /* Estilo para la etiqueta "Temperatura" en rojo */
+        .rojo {
+            color: red;
+        }
+
+        /* Estilo para los datos en negro */
+        .negro {
+            color: black;
+        }
+    </style>
 </head>
 <body>
+    <img class="imagen-esquina-izquierda" src="{{ url_for('static', filename='images/pngwing2.png') }}" alt="Imagen 1">
+    <img class="imagen-esquina-derecha" src="{{ url_for('static', filename='images/pngwing.png') }}" alt="Imagen 2">
+    
     <h1>Pronóstico del Clima</h1>
     
     <form method="POST">
@@ -17,11 +45,13 @@
     <div>
         {% if data %}
             <h2>Pronóstico del clima para {{ ciudad }}</h2>
-            <p><strong>Temperatura: {{ temperatura_celsius }} °C</p>
-            <p><strong>Humedad:</strong> {{ data.main.humidity }}%</p>
-            <p><strong>Descripción: {{ data['weather'][0]['description'] }}</p>
-            <p><strong>Presión:</strong> {{ data.main.pressure }} hPa</p>
+            <!-- Aplicar clase "rojo" para la etiqueta "Temperatura" y "negro" para los datos -->
+            <p><strong class="rojo">Temperatura:</strong> <span class="negro">{{ temperatura_celsius }} °C</span></p>
+            <p><strong class="rojo">Humedad:</strong> <span class="negro">{{ data.main.humidity }}%</span></p>
+            <p><strong class="rojo">Descripción:</strong> <span class="negro">{{ data['weather'][0]['description'] }}</span></p>
+            <p><strong class="rojo">Presión:</strong> <span class="negro">{{ data.main.pressure }} hPa</span></p>
         {% endif %}
     </div>
 </body>
 </html>
+
