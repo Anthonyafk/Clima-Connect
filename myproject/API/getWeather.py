@@ -4,9 +4,32 @@ import requests
 
 api_key = OPENWEATHER_API_KEY
 
-# Función principal para obtener los datos del tiempo desde la API
-def obtener_datos_del_tiempo(ciudad="Tokyo" ): # Ciudad predeterminada
-    pais = "jp" # Pais por defecto
+nombres_abreviados = {
+    "ciudad de méxico": ["ciudad de méxico", "mex", "cdmx", "mxm"],
+    "guadalajara": ["guadalajara", "gdl"],
+    "cancun": ["cancun", "cun"],
+    "tijuana": ["tijuana", "tij"],
+    "puerto vallarta": ["puerto vallarta", "pvr"],
+    "veracruz": ["veracruz", "ver", "acruz"],
+    "monterrey": ["monterrey", "mty", "mon"]
+}
+
+def encontrar_nombre_similar(entrada_usuario):
+    entrada_usuario = entrada_usuario.lower()
+    
+    for nombre, abreviaturas in nombres_abreviados.items():
+        if entrada_usuario in abreviaturas:
+            return nombre
+    
+    coincidencias = difflib.get_close_matches(entrada_usuario, nombres_abreviados.keys())
+    
+    if coincidencias:
+        return coincidencias[0]
+    else:
+        return None
+
+def obtener_datos_del_tiempo(ciudad="Tokyo" ):
+    pais = "jp"
     
     if request.method == "POST":
         ciudad = request.form.get("ciudad")

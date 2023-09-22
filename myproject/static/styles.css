@@ -1,0 +1,45 @@
+/* styles.css */
+
+/* Estilos generales de la página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para el contenedor principal */
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para encabezados */
+h1 {
+    color: #333;
+}
+
+/* Estilos para mensajes de error */
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+/* Para centrar contenidos */
+.center-contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Esto centra verticalmente en la ventana del navegador */
+}
+
+/* Establecer un ancho máximo para la imagen */
+.center-image {
+    max-width: 75%; /* Puedes ajustar el valor según tus necesidades */
+}
