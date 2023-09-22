@@ -1,6 +1,9 @@
-from flask import render_template, request
+from flask import Flask, render_template, request
 from API.config import OPENWEATHER_API_KEY
 import requests
+import difflib
+
+app = Flask(__name__)
 
 api_key = OPENWEATHER_API_KEY
 
@@ -34,18 +37,21 @@ def obtener_datos_del_tiempo(ciudad="Tokyo" ):
     if request.method == "POST":
         ciudad = request.form.get("ciudad")
         pais = request.form.get("pais")
+        ciudad = encontrar_nombre_similar(ciudad)
     
-    # URL de la API de OpenWeatherMap con ciudad y país
     url = f"http://api.openweathermap.org/data/2.5/weather?q={ciudad},{pais}&appid={api_key}"
 
     try:
         response = requests.get(url)
+        response.raise_for_status()
+        
         data = response.json()
-        
-        # Realiza la conversión de grados Kelvin a grados Celsius
         temperatura_celsius = data.get("main", {}).get("temp", 0) - 273.15
-        
-        # Muestra los datos del tiempo en la página
         return render_template("index.html", data=data, ciudad=ciudad, temperatura_celsius=temperatura_celsius)
     except requests.exceptions.RequestException as e:
-        return f"Error al obtener datos del tiempo: {e}"
+        error_message = "Error al obtener datos del tiempo. Por favor, verifica tu conexión a Internet."
+        return render_template("error.html", error_message=error_message)
+
+if __name__ == "__main__":
+    app.run(debug=True)
+

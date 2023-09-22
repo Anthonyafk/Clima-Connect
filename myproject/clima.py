@@ -2,6 +2,7 @@
 from flask import Flask, render_template, request
 from API.getWeather import obtener_datos_del_tiempo, encontrar_nombre_similar
 
+
 # para runnear la app
 app = Flask(__name__)
 
