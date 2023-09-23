@@ -29,3 +29,17 @@ h1 {
     color: red;
     font-weight: bold;
 }
+
+/* Para centrar contenidos */
+.center-contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Esto centra verticalmente en la ventana del navegador */
+}
+
+/* Establecer un ancho máximo para la imagen */
+.center-image {
+    max-width: 75%; /* Puedes ajustar el valor según tus necesidades */
+}

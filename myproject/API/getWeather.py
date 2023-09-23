@@ -8,12 +8,14 @@ app = Flask(__name__)
 api_key = OPENWEATHER_API_KEY
 
 nombres_abreviados = {
-    "ciudad de méxico": ["ciudad de méxico", "mex", "cdmx"],
+    "ciudad de méxico": ["ciudad de méxico", "mex", "cdmx", "mxm"],
     "guadalajara": ["guadalajara", "gdl"],
     "cancun": ["cancun", "cun"],
     "tijuana": ["tijuana", "tij"],
     "puerto vallarta": ["puerto vallarta", "pvr"],
     "monterrey": ["monterrey", "mty"]
+    "veracruz": ["veracruz", "ver", "acruz"],
+    "monterrey": ["monterrey", "mty", "mon"]
 }
 
 def encontrar_nombre_similar(entrada_usuario):

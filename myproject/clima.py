@@ -1,4 +1,3 @@
-
 # Imports
 from flask import Flask, render_template, request
 from API.getWeather import obtener_datos_del_tiempo, encontrar_nombre_similar
@@ -23,4 +22,3 @@ def main():
         return f"{ciudad}"  # Mostrar la ciudad en la página web
 
     return render_template("index.html")
-
