@@ -13,6 +13,7 @@ nombres_abreviados = {
     "cancun": ["cancun", "cun"],
     "tijuana": ["tijuana", "tij"],
     "puerto vallarta": ["puerto vallarta", "pvr"],
+    "monterrey": ["monterrey", "mty"]
     "veracruz": ["veracruz", "ver", "acruz"],
     "monterrey": ["monterrey", "mty", "mon"]
 }
