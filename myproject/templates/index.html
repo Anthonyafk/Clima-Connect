@@ -5,17 +5,19 @@
     <meta charset="UTF-8">
     <title>Pronóstico del Clima</title>
     <style>
-        /* Estilo para las imágenes en las esquinas inferiores */
+        /* Estilo para las imágenes en las esquinas superiores */
         .imagen-esquina-izquierda {
             position: fixed;
-            bottom: 0;
+            top: 0;
             left: 0;
+            transform: scale(0.40);
         }
 
         .imagen-esquina-derecha {
             position: fixed;
-            bottom: 0;
+            top: 0;
             right: 0;
+            transform: scale(0.40);
         }
 
         /* Estilo para la etiqueta "Temperatura" en rojo */
@@ -44,12 +46,12 @@
     <!-- Mostrar los datos del tiempo aquí -->
     <div>
         {% if data %}
-            <h2>Pronóstico del clima de ciudad destino: {{ ciudad }}</h2>
+            <h2>Pronóstico del clima en ciudad deseada/destino: {{ ciudad | capitalize }}</h2>
             <!-- Aplicar clase "rojo" para la etiqueta "Temperatura" y "negro" para los datos -->
-            <p><strong class="rojo">Temperatura:</strong> <span class="negro">{{ temperatura_celsius }} °C</span></p>
-            <p><strong class="rojo">Humedad:</strong> <span class="negro">{{ data.main.humidity }}%</span></p>
-            <p><strong class="rojo">Descripción:</strong> <span class="negro">{{ data['weather'][0]['description'] }}</span></p>
-            <p><strong class="rojo">Presión:</strong> <span class="negro">{{ data.main.pressure }} hPa</span></p>
+            <p><strong class="rojo">Temperatura del clima en ciudad deseada/destino:</strong> <span class="negro">{{ temperatura_celsius }} °C</span></p>
+            <p><strong class="rojo">Humedad del clima en ciudad deseada/destino:</strong> <span class="negro">{{ data.main.humidity }}%</span></p>
+            <p><strong class="rojo">Descripción del clima en ciudad deseada/destino:</strong> <span class="negro">{{ data['weather'][0]['description'] }}</span></p>
+            <p><strong class="rojo">Presión del clima en ciudad deseada/destino:</strong> <span class="negro">{{ data.main.pressure }} hPa</span></p>
             <!-- Mostrar información de origen si está disponible -->
             {% if origen %}
             <p><strong class="rojo">Origen:</strong> <span class="negro">{{ origen }}</span></p>
@@ -57,7 +59,7 @@
             
             <!-- Mostrar humedad, descripción y presión de origen si están disponibles -->
             {% if origen %}
-            <h2>Pronóstico del clima en ciudad de origen: {{ encontrar_nombre_similar(origen) }}</h2> <!-- Usar la variable "origen" aquí -->
+            <h2>Pronóstico del clima en ciudad de origen: {{ encontrar_nombre_similar(origen) | capitalize }}</h2> <!-- Usar la variable "origen" aquí -->
             {% endif %}
             {% if temperatura_celsius_origen %}
                 <p><strong class="rojo">Temperatura en ciudad de origen:</strong> <span class="negro">{{ temperatura_celsius_origen }} °C</span></p>
