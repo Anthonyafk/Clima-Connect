@@ -99,20 +99,34 @@ flask --app clima run
 
 En dado caso de que surjan problemas haga lo sig:
 
-cd Downloads\Clima-Connect_____(solamente navegue hasta donde tiene instalado su repo)
-
-python3 -m venv .venv______(cree un entorno virtual)
-
-. .venv/bin/activate_______(activelo con ese comando)
-
-pip install Flask_______(si no lo tiene instalado escriba ese comando)
-
-pip install requests______(si no lo tiene instalado escriba ese comando)
-
-cd myproject_____(regrese a myproject)
-
-flask --app clima run _____(runne la app)
-
+**(solamente navegue hasta donde tiene instalado su repo)**
+```
+cd Downloads\Clima-Connect
+```
+**(cree un entorno virtual)**
+```
+python3 -m venv .venv
+```
+**(activelo con ese comando)**
+```
+. .venv/bin/activate
+```
+**(si no lo tiene instalado escriba ese comando)**
+```
+pip install Flask
+```
+**(si no lo tiene instalado escriba ese comando)**
+```
+pip install requests
+```
+**(regrese a myproject)**
+```
+cd myproject
+```
+**(runne la app)**
+```
+flask --app clima run 
+```
 
 **Disclaimer:**
 En el archivo llamado dataLoader.py que esta dentro de la carpeta Data se tiene que cambiar la direccion de memoria del archivo del dataSet dependiendo de donde se te haya instalado. es decir en:
