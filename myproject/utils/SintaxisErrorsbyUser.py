@@ -1,6 +1,9 @@
+"""
+Importamos la biblioteca difflib, que nos ayudará a buscar nombres similares.
+"""
 import difflib
 
-# Lista de nombres conocidos y sus IATA code en minúsculas
+# Lista de nombres conocidos y sus códigos IATA en minúsculas
 nombres_abreviados = {
     "ciudad de méxico": ["ciudad de méxico", "mex", "cdmx", "mxm"],
     "guadalajara": ["guadalajara", "gdl", "miguel hidalgo y costilla"],
@@ -59,6 +62,16 @@ nombres_abreviados = {
 }
 
 def encontrar_nombre_similar(entrada_usuario):
+    """
+    Función que busca un nombre similar en la lista de nombres conocidos
+    basándose en la entrada proporcionada por el usuario.
+
+    Args:
+        entrada_usuario (str): La entrada del usuario.
+
+    Returns:
+        str: El nombre similar encontrado o None si no se encuentra ninguna coincidencia.
+    """
     entrada_usuario = entrada_usuario.lower()
     
     for nombre, abreviaturas in nombres_abreviados.items():
@@ -71,3 +84,5 @@ def encontrar_nombre_similar(entrada_usuario):
         return coincidencias[0]
     else:
         return None
+
+
