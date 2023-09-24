@@ -22,7 +22,7 @@ nombres_abreviados = {
     "atlanta": ["atlanta", "atl"],
     "bogotá": ["bogotá", "el dorado", "bog"],
     "belize": ["belize", "philip s.w. goldson", "bze"],
-    "paris": ["paris", "cdg", "pParis-charles de gaulle"],
+    "paris": ["paris", "cdg", "paris-charles de gaulle"],
     "ciudad obregón": ["ciudad obregón", "cen"],
     "north carolina": ["north carolina", "charlotte-douglas", "clt"],
     "texas": ["texas", "dallas/fort worth", "dfw"],
