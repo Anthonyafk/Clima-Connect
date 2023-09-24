@@ -1,80 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Enlace al archivo de estilos CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <!-- Configuración de la página -->
     <meta charset="UTF-8">
     <title>Pronóstico del Clima</title>
+
+    <!-- Estilos CSS en línea para la página (útiles para estilos específicos de esta página) -->
     <style>
         /* Estilo para las imágenes en las esquinas superiores */
         .imagen-esquina-izquierda {
             position: fixed;
             top: 0;
             left: 0;
-            transform: scale(0.40);
+            transform: scale(0.40); /* Escalar la imagen al 40% de su tamaño original */
         }
 
         .imagen-esquina-derecha {
             position: fixed;
             top: 0;
             right: 0;
-            transform: scale(0.40);
+            transform: scale(0.40); /* Escalar la imagen al 40% de su tamaño original */
         }
 
         /* Estilo para la etiqueta "Temperatura" en rojo */
         .rojo {
-            color: red;
+            color: red; /* Color del texto: rojo */
         }
 
         /* Estilo para los datos en negro */
         .negro {
-            color: black;
+            color: black; /* Color del texto: negro */
         }
     </style>
 </head>
 <body>
+    <!-- Imágenes en las esquinas superiores -->
     <img class="imagen-esquina-izquierda" src="{{ url_for('static', filename='images/pngwing2.png') }}" alt="Imagen 1">
     <img class="imagen-esquina-derecha" src="{{ url_for('static', filename='images/pngwing.png') }}" alt="Imagen 2">
     
+    <!-- Encabezado principal -->
     <h1>Pronóstico del Clima</h1>
     
+    <!-- Formulario para ingresar la ciudad o ticket -->
     <form method="POST">
         <label for="ciudad">Ciudad / Ticket:</label>
-        <input type="text" id="ciudad" name="ciudad" placeholder="Ejemplo: Paris" required>
+        <input type="text" id="ciudad" name="ciudad" placeholder="Ejemplo: París" required>
         <button type="submit">Obtener Pronóstico</button>
     </form>
 
     <!-- Mostrar los datos del tiempo aquí -->
     <div>
         {% if data %}
+            <!-- Título del pronóstico -->
             <h2>Pronóstico del clima en ciudad deseada/destino: {{ ciudad | capitalize }}</h2>
+            
+            <!-- Datos del clima -->
             <!-- Aplicar clase "rojo" para la etiqueta "Temperatura" y "negro" para los datos -->
             <p><strong class="rojo">Temperatura del clima en ciudad deseada/destino:</strong> <span class="negro">{{ temperatura_celsius }} °C</span></p>
             <p><strong class="rojo">Humedad del clima en ciudad deseada/destino:</strong> <span class="negro">{{ data.main.humidity }}%</span></p>
             <p><strong class="rojo">Descripción del clima en ciudad deseada/destino:</strong> <span class="negro">{{ data['weather'][0]['description'] }}</span></p>
             <p><strong class="rojo">Presión del clima en ciudad deseada/destino:</strong> <span class="negro">{{ data.main.pressure }} hPa</span></p>
+            
             <!-- Mostrar información de origen si está disponible -->
             {% if origen %}
-            <p><strong class="rojo">Origen:</strong> <span class="negro">{{ origen }}</span></p>
+                <p><strong class="rojo">Origen:</strong> <span class="negro">{{ origen }}</span></p>
             
-            
-            <!-- Mostrar humedad, descripción y presión de origen si están disponibles -->
-            {% if origen %}
-            <h2>Pronóstico del clima en ciudad de origen: {{ encontrar_nombre_similar(origen) | capitalize }}</h2> <!-- Usar la variable "origen" aquí -->
-            {% endif %}
-            {% if temperatura_celsius_origen %}
-                <p><strong class="rojo">Temperatura en ciudad de origen:</strong> <span class="negro">{{ temperatura_celsius_origen }} °C</span></p>
-            {% endif %}
-            {% if humedad_origen %}
-                <p><strong class="rojo">Humedad en ciudad de origen:</strong> <span class="negro">{{ humedad_origen }}%</span></p>
-            {% endif %}
-            {% if descripcion_origen %}
-                <p><strong class="rojo">Descripción en ciudad origen:</strong> <span class="negro">{{ descripcion_origen }}</span></p>
-            {% endif %}
-            {% if presion_origen %}
-                <p><strong class="rojo">Presión en ciudad de origen:</strong> <span class="negro">{{ presion_origen }} hPa</span></p>
+                <!-- Mostrar humedad, descripción y presión de origen si están disponibles -->
+                <h2>Pronóstico del clima en ciudad de origen: {{ encontrar_nombre_similar(origen) | capitalize }}</h2>
+                
+                {% if temperatura_celsius_origen %}
+                    <p><strong class="rojo">Temperatura en ciudad de origen:</strong> <span class="negro">{{ temperatura_celsius_origen }} °C</span></p>
+                {% endif %}
+                {% if humedad_origen %}
+                    <p><strong class="rojo">Humedad en ciudad de origen:</strong> <span class="negro">{{ humedad_origen }}%</span></p>
+                {% endif %}
+                {% if descripcion_origen %}
+                    <p><strong class="rojo">Descripción en ciudad origen:</strong> <span class="negro">{{ descripcion_origen }}</span></p>
+                {% endif %}
+                {% if presion_origen %}
+                    <p><strong class="rojo">Presión en ciudad de origen:</strong> <span class="negro">{{ presion_origen }} hPa</span></p>
+                {% endif %}
             {% endif %}
         {% endif %}
-    {% endif %}
-</div>
+    </div>
 </body>
 </html>
