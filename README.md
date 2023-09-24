@@ -99,7 +99,7 @@ flask --app clima run
 
 En dado caso de que surjan problemas haga lo sig:
 
-cd Downloads\myproject_____(solamente navegue hasta donde tiene instalado su repo y entre a la carpeta myproject)
+cd Downloads\Clima-Connect_____(solamente navegue hasta donde tiene instalado su repo)
 
 python3 -m venv .venv______(cree un entorno virtual)
 
@@ -108,6 +108,8 @@ python3 -m venv .venv______(cree un entorno virtual)
 pip install Flask_______(si no lo tiene instalado escriba ese comando)
 
 pip install requests______(si no lo tiene instalado escriba ese comando)
+
+cd myproject_____(regrese a myproject)
 
 flask --app clima run _____(runne la app)
 
