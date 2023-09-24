@@ -1,45 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Enlace al archivo de estilos CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 
+    <!-- Configuración de la página -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Error - Weather App</title>
+
+    <!-- Estilos en línea para la página (útil para estilos específicos de esta página) -->
     <style>
+        /* Estilos globales para el cuerpo de la página */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            text-align: center;
-            margin: 0;
-            padding: 0;
+            font-family: Arial, sans-serif; /* Fuente del texto */
+            background-color: #f2f2f2; /* Color de fondo */
+            text-align: center; /* Alineación del texto */
+            margin: 0; /* Eliminar el margen exterior */
+            padding: 0; /* Eliminar el relleno exterior */
         }
 
+        /* Contenedor principal de la página */
         .container {
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            max-width: 400px; /* Ancho máximo del contenedor */
+            margin: 0 auto; /* Centrar horizontalmente el contenedor */
+            padding: 20px; /* Relleno interior del contenedor */
+            background-color: #fff; /* Color de fondo del contenedor */
+            border-radius: 5px; /* Borde redondeado del contenedor */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra del contenedor */
         }
 
+        /* Estilos para el encabezado principal */
         h1 {
-            color: #333;
+            color: #333; /* Color del texto del encabezado */
         }
 
+        /* Estilos para el mensaje de error */
         .error {
-            color: red;
-            font-weight: bold;
+            color: red; /* Color del texto de error */
+            font-weight: bold; /* Peso de la fuente en negrita */
         }
     </style>
 </head>
 <body>
+    <!-- Contenido de la página -->
     <div class="container">
-        <h1>Error - Clima Connect </h1>
+        <!-- Encabezado principal -->
+        <h1>Error - Clima Connect</h1>
+
+        <!-- Mensaje de error (se reemplaza dinámicamente) -->
         <p class="error">{{ error_message }}</p>
+
+        <!-- Imagen de error centrada -->
         <img src="{{ url_for('static', filename='images/SadCloud.png') }}" alt="Error Image" class="center-image">
     </div>
 </body>
 </html>
+
 
