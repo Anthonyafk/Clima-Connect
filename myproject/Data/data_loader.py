@@ -1,7 +1,8 @@
 import csv
 
 # Obtén la ruta completa al archivo CSV
-csv_file_path = r'C:\Users\danie\Downloads\Proyecto-1\myproject\Data\dataset2.csv'
+
+csv_file_path = '/home/above37845/Documents/Modelado y Programación/Clima-Connect/myproject/Data/dataset2.csv'
 
 # Cargar los datos del archivo CSV en un diccionario
 data = {}
@@ -29,5 +30,5 @@ def get_destination_by_ticket(num_ticket):
     if num_ticket in data:
         return data[num_ticket]['destination']
     else:
-        return None  # Devuelve None si el num_ticket no se encuentra en los datos
 
+        return None  # Devuelve None si el num_ticket no se encuentra en los datos

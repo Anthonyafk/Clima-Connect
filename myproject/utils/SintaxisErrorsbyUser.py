@@ -71,6 +71,3 @@ def encontrar_nombre_similar(entrada_usuario):
         return coincidencias[0]
     else:
         return None
-
-
-
