@@ -44,13 +44,35 @@
     <!-- Mostrar los datos del tiempo aquí -->
     <div>
         {% if data %}
-            <h2>Pronóstico del clima para {{ ciudad }}</h2>
+            <h2>Pronóstico del clima de ciudad destino: {{ ciudad }}</h2>
             <!-- Aplicar clase "rojo" para la etiqueta "Temperatura" y "negro" para los datos -->
             <p><strong class="rojo">Temperatura:</strong> <span class="negro">{{ temperatura_celsius }} °C</span></p>
             <p><strong class="rojo">Humedad:</strong> <span class="negro">{{ data.main.humidity }}%</span></p>
             <p><strong class="rojo">Descripción:</strong> <span class="negro">{{ data['weather'][0]['description'] }}</span></p>
             <p><strong class="rojo">Presión:</strong> <span class="negro">{{ data.main.pressure }} hPa</span></p>
+            <!-- Mostrar información de origen si está disponible -->
+            {% if origen %}
+            <p><strong class="rojo">Origen:</strong> <span class="negro">{{ origen }}</span></p>
+            
+            
+            <!-- Mostrar humedad, descripción y presión de origen si están disponibles -->
+            {% if origen %}
+            <h2>Pronóstico del clima en ciudad de origen: {{ encontrar_nombre_similar(origen) }}</h2> <!-- Usar la variable "origen" aquí -->
+            {% endif %}
+            {% if temperatura_celsius_origen %}
+                <p><strong class="rojo">Temperatura en ciudad de origen:</strong> <span class="negro">{{ temperatura_celsius_origen }} °C</span></p>
+            {% endif %}
+            {% if humedad_origen %}
+                <p><strong class="rojo">Humedad en ciudad de origen:</strong> <span class="negro">{{ humedad_origen }}%</span></p>
+            {% endif %}
+            {% if descripcion_origen %}
+                <p><strong class="rojo">Descripción en ciudad origen:</strong> <span class="negro">{{ descripcion_origen }}</span></p>
+            {% endif %}
+            {% if presion_origen %}
+                <p><strong class="rojo">Presión en ciudad de origen:</strong> <span class="negro">{{ presion_origen }} hPa</span></p>
+            {% endif %}
         {% endif %}
-    </div>
+    {% endif %}
+</div>
 </body>
 </html>
