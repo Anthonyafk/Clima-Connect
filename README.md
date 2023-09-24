@@ -117,7 +117,7 @@ flask --app clima run _____(runne la app)
 **Disclaimer:**
 En el archivo llamado dataLoader.py que esta dentro de la carpeta Data se tiene que cambiar la direccion de memoria del archivo del dataSet dependiendo de donde se te haya instalado. es decir en:
 ```
-csv_file_path = '/home/above37845/Documents/Modelado y Programación/Clima-Connect/myproject/Data/dataset2.csv'
+csv_file_path = r'/home/above37845/Documents/Modelado y Programación/Clima-Connect/myproject/Data/dataset2.csv'
 
 ```
 
