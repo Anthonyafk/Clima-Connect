@@ -1,4 +1,6 @@
-# Importa la función desde clima.py
+"""
+Importa la función obtener_datos_del_tiempo desde el módulo clima.py.
+"""
 from clima import obtener_datos_del_tiempo
 
 # Diccionario para los datos climáticos de ciudades
@@ -26,5 +28,9 @@ def obtener_datos_ciudad(ciudad):
     datos_climaticos[ciudad] = datos_ciudad
 
     return datos_ciudad
+
+
+
+
 
 
