@@ -20,8 +20,7 @@ def obtener_datos_ciudad(ciudad):
     if ciudad in datos_climaticos:
         return datos_climaticos[ciudad]
 
-    # Si los datos no están en el diccionario, realiza una consulta a la API y almacena los resultados
-    # Esto es solo un ejemplo, debes adaptarlo a tu código de consulta real a la API
+    # Si los datos no están en el diccionario, realiza una consulta a la API y almacena los resultados 
     datos_ciudad = obtener_datos_del_tiempo(ciudad)
 
     # Almacena los datos en el diccionario
