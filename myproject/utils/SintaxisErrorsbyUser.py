@@ -18,6 +18,30 @@ nombres_abreviados = {
     "mérida": ["mérida", "mid"],
     "oaxaca": ["oaxaca", "oax", "axa"],
     "puebla": ["puebla", "pbc", "ebla"],
+    "amsterdam": ["amsterdam", "ams"],
+    "atlanta": ["atlanta", "atl"],
+    "bogotá": ["bogotá", "el dorado", "bog"],
+    "belize": ["belize", "philip s.w. goldson", "bze"],
+    "paris": ["paris", "cdg", "pParis-charles de gaulle"],
+    "ciudad obregón": ["ciudad obregón", "cen"],
+    "north carolina": ["north carolina", "charlotte-douglas", "clt"],
+    "texas": ["texas", "dallas/fort worth", "dfw"],
+    "guatemala city": ["guatemala city", "gua"],
+    "havana": ["havana", "hav"],
+    "houston": ["houston", "iah"],
+    "queens": ["queens", "jfk"],
+    "los angeles": ["lax", "los angeles"],
+    "lima": ["lima", "lim"],
+    "madrid": ["madrid", "mad"],
+    "miami": ["miami", "mia"],
+    "mazatlán": ["mazatlán", "mzt"],
+    "chicago": ["chicago", "ord"],
+    "houston": ["houston", "phl"],
+    "philadelphia": ["philadelphia", "phl"],
+    "phoenix": ["phoenix", "phx"],
+    "santiago": ["santiago", "scl"],
+    "vancouver": ["vancouver", "yvr"],
+    "toronto": ["toronto", "yyz"],
     "puerto vallarta": ["puerto vallarta", "pvr", "licenciado gustavo díaz ordaz"],
     "puerto escondido": ["puerto escondido", "pxm"],
     "querétaro": ["querétaro", "qro", "eré"],
@@ -47,4 +71,6 @@ def encontrar_nombre_similar(entrada_usuario):
         return coincidencias[0]
     else:
         return None
+
+
 
