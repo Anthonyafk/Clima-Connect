@@ -34,19 +34,26 @@ def obtener_datos_del_tiempo(ciudad="Cuernavaca"):
     origen = ""  # Inicializa origen con una cadena vacía
     ciudad_destino = ""  # Inicializa ciudad_destino con una cadena vacía
     pais = request.form.get("pais")
+
+    
     
     if request.method == "POST":
         entrada = request.form.get("ciudad")
+ 
         
         # Verifica si la entrada contiene números, si es un ticket.
-        if contiene_numeros(entrada):
+    if contiene_numeros(entrada):
             ciudad_abreviada = obtener_ticket_de_destino(entrada)
             ciudad = encontrar_nombre_similar(ciudad_abreviada)
             origen = obtener_ticket_de_origen(entrada)
             ciudad_origen = encontrar_nombre_similar(origen)  # Obtiene la ciudad de origen
             ciudad_destino = encontrar_nombre_similar(origen)  # Asigna el mismo valor a ciudad_destino si es apropiado
-        else:
+    else:
            ciudad = encontrar_nombre_similar(entrada)
+           
+    if ciudad is None:
+            error_message = "Nombre de ciudad o ticket inválido. Recargue la página e inténtelo otra vez."
+            return render_template("error.html", error_message=error_message)
     
     url = f"http://api.openweathermap.org/data/2.5/weather?q={ciudad},{pais}&appid={api_key}"
     url_origen = f"http://api.openweathermap.org/data/2.5/weather?q={ciudad_origen},{pais}&appid={api_key}"  # Obtén el clima de la ciudad de origen
@@ -87,3 +94,4 @@ def obtener_datos_climaticos():
 # Comprueba si se está ejecutando el archivo directamente
 if __name__ == "__main__":
     app.run(debug=True)
+
