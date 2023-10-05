@@ -10,7 +10,7 @@
 
     <!-- Configuración de la página -->
     <meta charset="UTF-8">
-    <title>Pronóstico del Clima</title>
+    <title>Clima-Connect</title>
 
     <script>
         // Función para obtener datos climáticos y actualizar la imagen
@@ -44,14 +44,14 @@
     <img class="imagen-esquina-derecha" src="{{ url_for('static', filename='images/pngwing.png') }}" alt="Imagen 2">
     
     <!-- Encabezado principal -->
-    <h1>Pronóstico del Clima</h1>
+    <h1>Pronóstico del clima</h1>
     
     <!-- Formulario para ingresar la ciudad o ticket -->
     <form method="POST">
         <label for="ciudad">Ciudad / Ticket:</label>
         <input type="text" id="ciudad" name="ciudad" placeholder="Ejemplo: París" required>
         <!-- Llama a la función obtenerDatosClimaticosYActualizarImagen al hacer clic en el botón -->
-        <button class="button" type="button" onclick="obtenerDatosClimaticosYActualizarImagen()">Obtener Pronóstico</button>
+        <button class="button" type="submit" onclick="obtenerDatosClimaticosYActualizarImagen()">Obtener Pronóstico</button>
     </form>
 
     <!-- Mostrar los datos del tiempo aquí -->

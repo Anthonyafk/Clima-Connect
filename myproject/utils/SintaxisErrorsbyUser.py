@@ -72,18 +72,18 @@ def encontrar_nombre_similar(entrada_usuario):
     Returns:
         str: El nombre similar encontrado o None si no se encuentra ninguna coincidencia.
     """
-    if entrada_usuario is not None:
+    if isinstance(entrada_usuario, str):
         entrada_usuario = entrada_usuario.lower()
+    else:
+        # Manejar la entrada incorrecta de alguna manera, como mostrar un mensaje de error.
+        return None
     
-        for nombre, abreviaturas in nombres_abreviados.items():
-            if entrada_usuario in abreviaturas:
-                return nombre
-    
-    coincidencias = difflib.get_close_matches(entrada_usuario, nombres_abreviados.keys())
+    for nombre, abreviaturas in nombres_abreviados.items():
+        if entrada_usuario in abreviaturas:
+            return nombre
+    coincidencias = difflib.get_close_matches(entrada_usuario, nombres_abreviados.keys(), n=1, cutoff=0.4)
     
     if coincidencias:
         return coincidencias[0]
     else:
         return None
-
-

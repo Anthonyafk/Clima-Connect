@@ -22,5 +22,3 @@ def main():
         return f"{ciudad}"  # Mostrar la ciudad en la página web
 
     return render_template("index.html")
-
-
