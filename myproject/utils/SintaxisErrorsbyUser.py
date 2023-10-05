@@ -5,7 +5,7 @@ import difflib
 
 # Lista de nombres conocidos y sus códigos IATA en minúsculas
 nombres_abreviados = {
-    "ciudad de méxico": ["ciudad de méxico", "mex", "cdmx", "mxm"],
+    "ciudad de méxico": ["ciudad de méxico", "mex", "cdmx", "mxm", "mejico"],
     "guadalajara": ["guadalajara", "gdl", "miguel hidalgo y costilla"],
     "cancun": ["cancun", "cun"],
     "acapulco": ["acapulco", "aca", "pulc"],
@@ -72,11 +72,12 @@ def encontrar_nombre_similar(entrada_usuario):
     Returns:
         str: El nombre similar encontrado o None si no se encuentra ninguna coincidencia.
     """
-    entrada_usuario = entrada_usuario.lower()
+    if entrada_usuario is not None:
+        entrada_usuario = entrada_usuario.lower()
     
-    for nombre, abreviaturas in nombres_abreviados.items():
-        if entrada_usuario in abreviaturas:
-            return nombre
+        for nombre, abreviaturas in nombres_abreviados.items():
+            if entrada_usuario in abreviaturas:
+                return nombre
     
     coincidencias = difflib.get_close_matches(entrada_usuario, nombres_abreviados.keys())
     

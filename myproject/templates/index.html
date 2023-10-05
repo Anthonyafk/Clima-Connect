@@ -1,41 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Enlace al archivo de estilos CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <!-- Enlace al archivo JavaScript -->
+    <script src="{{ url_for('static', filename='js/clima.js') }}"></script>
 
     <!-- Configuración de la página -->
     <meta charset="UTF-8">
     <title>Pronóstico del Clima</title>
 
-    <!-- Estilos CSS en línea para la página (útiles para estilos específicos de esta página) -->
-    <style>
-        /* Estilo para las imágenes en las esquinas superiores */
-        .imagen-esquina-izquierda {
-            position: fixed;
-            top: 0;
-            left: 0;
-            transform: scale(0.40); /* Escalar la imagen al 40% de su tamaño original */
-        }
+    <script>
+        // Función para obtener datos climáticos y actualizar la imagen
+        function obtenerDatosClimaticosYActualizarImagen() {
+            // Obtiene la ciudad ingresada por el usuario
+            var ciudad = document.getElementById("ciudad").value;
+            
+            // Realiza una solicitud AJAX al servidor Flask para obtener los datos climáticos
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/", true); // Usa la misma ruta que el formulario
+            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
-        .imagen-esquina-derecha {
-            position: fixed;
-            top: 0;
-            right: 0;
-            transform: scale(0.40); /* Escalar la imagen al 40% de su tamaño original */
-        }
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    var datosClima = JSON.parse(xhr.responseText);
+                    asignarImagenClima(datosClima.descripcion);
+                } else {
+                    console.error("Error al obtener datos climáticos.");
+                }
+            };
 
-        /* Estilo para la etiqueta "Temperatura" en rojo */
-        .rojo {
-            color: red; /* Color del texto: rojo */
+            var data = JSON.stringify({ ciudad: ciudad });
+            xhr.send(data);
         }
-
-        /* Estilo para los datos en negro */
-        .negro {
-            color: black; /* Color del texto: negro */
-        }
-    </style>
+    </script>
 </head>
+
 <body>
     <!-- Imágenes en las esquinas superiores -->
     <img class="imagen-esquina-izquierda" src="{{ url_for('static', filename='images/pngwing2.png') }}" alt="Imagen 1">
@@ -48,7 +50,8 @@
     <form method="POST">
         <label for="ciudad">Ciudad / Ticket:</label>
         <input type="text" id="ciudad" name="ciudad" placeholder="Ejemplo: París" required>
-        <button type="submit">Obtener Pronóstico</button>
+        <!-- Llama a la función obtenerDatosClimaticosYActualizarImagen al hacer clic en el botón -->
+        <button class="button" type="button" onclick="obtenerDatosClimaticosYActualizarImagen()">Obtener Pronóstico</button>
     </form>
 
     <!-- Mostrar los datos del tiempo aquí -->
@@ -85,6 +88,8 @@
                 {% endif %}
             {% endif %}
         {% endif %}
+                <!-- Imágenes de los climas dependiendo la ciudad -->
+                <img id="clima-imagen" src="{{ url_for('static', filename='images/Welcome.jpg') }}" alt="Imagen de clima" data-atributo="">
     </div>
 </body>
 </html>
