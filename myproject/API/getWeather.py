@@ -1,7 +1,7 @@
 """
 Importaciones necesarias para la aplicación Flask.
 """
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from API.config import OPENWEATHER_API_KEY
 import requests
 from utils.SintaxisErrorsbyUser import encontrar_nombre_similar
@@ -71,6 +71,18 @@ def obtener_datos_del_tiempo(ciudad="Cuernavaca"):
     except requests.exceptions.RequestException as e:
         error_message = "Error al obtener datos del tiempo. Por favor, verifica tu conexión a Internet."
         return render_template("error.html", error_message=error_message)
+
+# Nueva ruta para manejar la solicitud AJAX de obtención de datos climáticos
+@app.route("/obtener_datos_climaticos", methods=["POST"])
+def obtener_datos_climaticos():
+    ciudad = request.form.get("ciudad")
+    datos_clima = obtener_datos_del_tiempo(ciudad)  # Llama a tu función para obtener datos climáticos
+
+    # Asegúrate de tener una variable 'descripcion' en 'datos_clima' que contenga la descripción del clima
+    if "descripcion" in datos_clima:
+        return jsonify(datos_clima)
+    else:
+        return jsonify({"error": "No se pudieron obtener los datos climáticos"})
 
 # Comprueba si se está ejecutando el archivo directamente
 if __name__ == "__main__":

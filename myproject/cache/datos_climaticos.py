@@ -1,7 +1,7 @@
 """
 Importa la función obtener_datos_del_tiempo desde el módulo clima.py.
 """
-from API.getWeather import obtener_datos_del_tiempo
+from clima import obtener_datos_del_tiempo
 
 # Diccionario para los datos climáticos de ciudades
 cache = {}

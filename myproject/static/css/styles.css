@@ -1,0 +1,102 @@
+/* styles.css */
+
+/* Estilos generales de la página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para el contenedor principal */
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #000000;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para encabezados */
+
+h1 {
+    font-size: 36px;
+    color: #000000;
+    font-family: 'Open Sans';
+}
+
+/* Estilos para mensajes de error */
+.error {
+    color: red;        /* Color del texto: rojo */
+    font-weight: bold; /* Peso de la fuente: negrita */
+}
+
+/* Para centrar contenidos */
+.center-contents {
+    display: flex;            /* Utilizar el modelo de caja flexible */
+    flex-direction: column;   /* Apilar elementos verticalmente */
+    align-items: center;      /* Centrar horizontalmente los elementos */
+    justify-content: center;  /* Centrar verticalmente los elementos */
+    height: 100vh;            /* Esto centra verticalmente en la ventana del navegador */
+}
+
+/* Establecer un ancho máximo para la imagen */
+.center-image {
+    max-width: 75%; /* Establecer el ancho máximo al 75% del contenedor (ajustable) */
+}
+
+.button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilo para el botón cuando el mouse está encima (hover) */
+.button:hover {
+    background-color: #0056b3; /* Cambiar el color de fondo al pasar el mouse */
+    color: #fff; /* Cambiar el color del texto al pasar el mouse */
+}
+
+
+/* Agregar una sombra suave a un contenedor */
+.container {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/*Estilos que estaban en el Style del HTML*/
+
+/* Estilo para las imágenes en las esquinas superiores */
+.imagen-esquina-izquierda {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: scale(0.40); /* Escalar la imagen al 40% de su tamaño original */
+}
+
+.imagen-esquina-derecha {
+    position: fixed;
+    top: 0;
+    right: 0;
+    transform: scale(0.40); /* Escalar la imagen al 40% de su tamaño original */
+}
+
+/* Estilo para la etiqueta "Temperatura" en rojo */
+.rojo {
+    color: red; /* Color del texto: rojo */
+}
+
+/* Estilo para los datos en negro */
+.negro {
+    color: black; /* Color del texto: negro */
+}
+
+/* Estilo para el fondo en caso de cielo despejado */
+.clear-sky {
+    background-image: url('../images/clearSky.jpg');
+    /* Ajusta otros estilos según sea necesario */
+}
