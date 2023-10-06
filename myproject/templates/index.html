@@ -89,20 +89,20 @@
 
         // Espera a que el documento HTML esté completamente cargado
         document.addEventListener("DOMContentLoaded", function () {
-    var cuadroClima = document.querySelector(".cuadro-encabezado");
-    var entradaDatos = document.querySelector(".entrada-datos");
-    var cuadroTituloDestino = document.querySelector(".cuadro-titulo.aparecer-ciudad-destino");
-    var cuadroDatoDestino = document.querySelector(".cuadro-dato.aparecer-ciudad-destino");
-    var cuadroTituloOrigen = document.querySelector(".cuadro-titulo.aparecer-ciudad-origen");
-    var cuadroDatoOrigen = document.querySelector(".cuadro-dato.aparecer-ciudad-origen");
-
-    // Aplica las clases "aparecer" para activar las animaciones por separado
-    cuadroClima.classList.add("aparecer");
-    entradaDatos.classList.add("aparecer");
-    cuadroTituloDestino.classList.add("aparecer-ciudad-destino");
-    cuadroDatoDestino.classList.add("aparecer-ciudad-destino");
-    cuadroTituloOrigen.classList.add("aparecer-ciudad-origen");
-    cuadroDatoOrigen.classList.add("aparecer-ciudad-origen");
+        var cuadroClima = document.querySelector(".cuadro-encabezado.aparecer");
+        var entradaDatos = document.querySelector(".entrada-datos.aparecer");
+        var cuadroTituloDestino = document.querySelector(".cuadro-titulo.aparecer-ciudad-destino");
+        var cuadroDatoDestino = document.querySelector(".cuadro-dato.aparecer-ciudad-destino");
+        var cuadroTituloOrigen = document.querySelector(".cuadro-titulo.aparecer-ciudad-origen");
+        var cuadroDatoOrigen = document.querySelector(".cuadro-dato.aparecer-ciudad-origen");
+            
+        // Aplica las clases "aparecer" para activar las animaciones por separado
+        cuadroClima.classList.add("aparecer");
+        entradaDatos.classList.add("aparecer");
+        cuadroTituloDestino.classList.add("aparecer");
+        cuadroDatoDestino.classList.add("aparecer");
+        cuadroTituloOrigen.classList.add("aparecer");
+        cuadroDatoOrigen.classList.add("aparecer");
 
     // Después de un breve retraso, agrega las propiedades de animación
     setTimeout(function () {
