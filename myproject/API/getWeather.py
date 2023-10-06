@@ -5,7 +5,7 @@ from flask import Flask, render_template, request, jsonify
 from API.config import OPENWEATHER_API_KEY
 import requests
 from utils.SintaxisErrorsbyUser import encontrar_nombre_similar
-from Data.data_loader import obtener_ticket_de_origen, obtener_ticket_de_destino
+from static.Data.data_loader import obtener_ticket_de_origen, obtener_ticket_de_destino
 
 # Inicialización de la aplicación Flask
 app = Flask(__name__)
@@ -15,19 +15,8 @@ api_key = OPENWEATHER_API_KEY
 
 # Función auxiliar para verificar si una cadena contiene números
 def contiene_numeros(texto):
-    """
-    Función que verifica si un texto contiene números.
-
-    Args:
-        texto (str): El texto a verificar.
-
-    Returns:
-        bool: True si el texto contiene al menos un número, False en caso contrario.
-    """
-    if texto is None:
-        return False
-    
     return any(char.isdigit() for char in texto)
+
 
 # Ruta principal ("/") y métodos permitidos (GET y POST)
 @app.route("/", methods=["GET", "POST"])
@@ -106,4 +95,3 @@ def obtener_datos_climaticos():
 # Comprueba si se está ejecutando el archivo directamente
 if __name__ == "__main__":
     app.run(debug=True)
-
