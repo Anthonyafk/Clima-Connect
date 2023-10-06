@@ -100,3 +100,14 @@ h1 {
     background-image: url('../images/clearSky.jpg');
     /* Ajusta otros estilos según sea necesario */
 }
+
+.cuadro-encabezado.aparecer {
+    opacity: 1; /* El título se vuelve completamente visible */
+    transform: translateY(0); /* El título vuelve a su posición original */
+}
+
+.entrada-datos {
+    opacity: 1; 
+    transform: translateY(0); 
+}
+

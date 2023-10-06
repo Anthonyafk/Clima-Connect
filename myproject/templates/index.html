@@ -54,7 +54,7 @@
             margin-right: auto;
         }
 
-        .cuadro-entrada {
+        .entrada-datos {
             border: 1px solid #000000;
             padding: 7px;
             margin: 7px;
@@ -63,9 +63,12 @@
             max-width: 35%; /* Limitar el ancho al 80% del contenedor */
             margin-left: auto;
             margin-right: auto;
+            opacity: 0; /* Inicialmente, el título será transparente */
+            transform: translateY(-20px); 
+            transition: opacity 1s ease, transform 1s ease; 
         }
         
-        .cuadro-clima {
+        .cuadro-encabezado {
             border: 1px solid #000000;
             padding: 7px;
             margin: 7px;
@@ -74,44 +77,22 @@
             max-width: 25%; /* Limitar el ancho al 80% del contenedor */
             margin-left: auto;
             margin-right: auto;
+            opacity: 0; /* Inicialmente, el título será transparente */
+            transform: translateY(-20px); /* Inicialmente, el título estará desplazado hacia arriba */
+            transition: opacity 1s ease, transform 1s ease; /* Transiciones para opacity y transform */
         }
     </style>
-
-    <script>
-        // Función para obtener datos climáticos y actualizar la imagen
-        function obtenerDatosClimaticosYActualizarImagen() {
-            // Obtiene la ciudad ingresada por el usuario
-            var ciudad = document.getElementById("ciudad").value;
-            
-            // Realiza una solicitud AJAX al servidor Flask para obtener los datos climáticos
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "/", true); // Usa la misma ruta que el formulario
-            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
-            xhr.onload = function () {
-                if (xhr.status === 200) {
-                    var datosClima = JSON.parse(xhr.responseText);
-                    asignarImagenClima(datosClima.descripcion);
-                } else {
-                    console.error("Error al obtener datos climáticos.");
-                }
-            };
-
-            var data = JSON.stringify({ ciudad: ciudad });
-            xhr.send(data);
-        }
-    </script>
 </head>
 
 <body>
 
     <!-- Encabezado principal -->
-    <div class="cuadro-clima">
+    <div class="cuadro-encabezado">
         <h1>Clima Connect</h1>
     </div>
     
     <!-- Formulario para ingresar la ciudad o ticket -->
-    <div class="cuadro-entrada">
+    <div class="entrada-datos">
         <form method="POST">
             <label for="ciudad">Ciudad / Ticket:</label>
             <input type="text" id="ciudad" name="ciudad" placeholder="Ejemplo: París" required>
@@ -163,6 +144,26 @@
             {% endif %}
         {% endif %}
     </div>
+
+    <script>
+        // Espera a que el documento HTML esté completamente cargado
+        document.addEventListener("DOMContentLoaded", function () {
+        var cuadroClima = document.querySelector(".cuadro-encabezado");
+        var entradaDatos = document.querySelector(".entrada-datos");
+            
+        // Aplica la clase "aparecer" para activar la animación
+        cuadroClima.classList.add("aparecer");
+        entradaDatos.classList.add("aparecer");
+            
+        // Después de un breve retraso, agrega las propiedades de animación
+        setTimeout(function () {
+            entradaDatos.style.opacity = 1;
+            entradaDatos.style.transform = "translateY(0)";
+        }, 100); // Ajusta el tiempo de retraso según sea necesario
+    });
+
+    </script>
+    
 </body>
 </html>
 
