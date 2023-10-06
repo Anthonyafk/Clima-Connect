@@ -43,20 +43,17 @@ function asignarImagenClima() {
     imagenClima.src = imagenURL;
 }
 
-    function aplicarAnimaciones() {
+    function aplicarAnimaciones(elemento) {
         // Elimina la clase "aparecer" para reiniciar la animación
-        cuadroClima.classList.remove("aparecer");
-        entradaDatos.classList.remove("aparecer");
+        elemento.classList.remove("aparecer");
 
         // Aplica la clase "aparecer" para activar la animación
-        cuadroClima.classList.add("aparecer");
-        entradaDatos.classList.add("aparecer");
+        elemento.classList.add("aparecer");
 
         // Después de un breve retraso, agrega las propiedades de animación
         setTimeout(function () {
-            cuadroClima.style.opacity = 1;
-            cuadroClima.style.transform = "translateY(0)";
-            entradaDatos.style.opacity = 1;
-            entradaDatos.style.transform = "translateY(0)";
+            elemento.style.opacity = 1;
+            elemento.style.transform = "translateY(0)";
         }, 100); // Ajusta el tiempo de retraso según sea necesario
     }
+    

@@ -143,9 +143,6 @@ h1 {
     max-width: 35%; /* Limitar el ancho al 80% del contenedor */
     margin-left: auto;
     margin-right: auto;
-    opacity: 0; /* Inicialmente, el título será transparente */
-    transform: translateY(-20px); 
-    transition: opacity 1s ease, transform 1s ease; 
 }
 
 .cuadro-encabezado {
@@ -157,19 +154,24 @@ h1 {
     max-width: 25%; /* Limitar el ancho al 80% del contenedor */
     margin-left: auto;
     margin-right: auto;
-    opacity: 0; /* Inicialmente, el título será transparente */
-    transform: translateY(-20px); /* Inicialmente, el título estará desplazado hacia arriba */
+}
+
+.aparecer {
+    opacity: 1;
+    transform: translateY(-20px);
+    transition: opacity 1s ease, transform 1s ease;
+}y
+
+/* Establece las animaciones para ciudad destino */
+.aparecer-ciudad-destino {
+    opacity: 0;
+    transform: translateY(-20px);
     transition: opacity 1s ease, transform 1s ease;
 }
 
-
-.cuadro-encabezado.aparecer {
-    opacity: 1; /* El título se vuelve completamente visible */
-    transform: translateY(0); /* El título vuelve a su posición original */
+/* Establece las animaciones para ciudad origen */
+.aparecer-ciudad-origen {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 1s ease, transform 1s ease;
 }
-
-.entrada-datos.aparecer {
-    opacity: 1; 
-    transform: translateY(0); 
-}
-

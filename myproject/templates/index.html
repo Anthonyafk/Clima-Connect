@@ -26,17 +26,17 @@
 <body>
 
     <!-- Encabezado principal -->
-    <div class="cuadro-encabezado">
+    <div class="cuadro-encabezado aparecer">
         <h1>Clima Connect</h1>
     </div>
     
     <!-- Formulario para ingresar la ciudad o ticket -->
-    <div class="entrada-datos">
+    <div class="entrada-datos aparecer">
         <form method="POST">
             <label for="ciudad">Ciudad / Ticket:</label>
             <input type="text" id="ciudad" name="ciudad" placeholder="" required>
             <!-- Llama a la función obtenerDatosClimaticosYActualizarImagen al hacer clic en el botón -->
-            <button class="button" type="submit" >Obtener Pronóstico</button>
+            <button class="button" type="submit">Obtener Pronóstico</button>
         </form>
     </div>
 
@@ -44,12 +44,12 @@
     <div>
         {% if data %}
             <!-- Título del pronóstico -->
-            <div class="cuadro-titulo">
+            <div class="cuadro-titulo aparecer-ciudad-destino">
                 <h2>Pronóstico del clima en ciudad deseada/destino: {{ ciudad | capitalize }}</h2>
             </div>
             
             <!-- Datos del clima en cuadritos -->
-            <div class="cuadro-dato">
+            <div class="cuadro-dato aparecer-ciudad-destino">
                 <ul>
                     <li><strong class="rojo">Temperatura:</strong> <span class="negro">{{ temperatura_celsius }} °C</span></li>
                     <li><strong class="rojo">Humedad:</strong> <span class="negro">{{ data.main.humidity }}%</span></li>
@@ -60,11 +60,11 @@
             
             <!-- Datos del clima de origen en cuadritos -->
             {% if origen %}
-            <div class="cuadro-titulo">
+            <div class="cuadro-titulo aparecer-ciudad-origen">
                 <h2>Pronóstico del clima en ciudad de origen: {{ encontrar_nombre_similar(origen) | capitalize }}</h2>
             </div>
             
-            <div class="cuadro-dato">
+            <div class="cuadro-dato aparecer-ciudad-origen">
                 <ul>
                     {% if temperatura_celsius_origen %}
                         <li><strong class="rojo">Temperatura:</strong> <span class="negro">{{ temperatura_celsius_origen }} °C</span></li>
@@ -86,25 +86,40 @@
     </div>
 
     <script>
-        var cuadroClima;
-        var entradaDatos;
+
         // Espera a que el documento HTML esté completamente cargado
         document.addEventListener("DOMContentLoaded", function () {
-        var cuadroClima = document.querySelector(".cuadro-encabezado");
-        var entradaDatos = document.querySelector(".entrada-datos");
+    var cuadroClima = document.querySelector(".cuadro-encabezado");
+    var entradaDatos = document.querySelector(".entrada-datos");
+    var cuadroTituloDestino = document.querySelector(".cuadro-titulo.aparecer-ciudad-destino");
+    var cuadroDatoDestino = document.querySelector(".cuadro-dato.aparecer-ciudad-destino");
+    var cuadroTituloOrigen = document.querySelector(".cuadro-titulo.aparecer-ciudad-origen");
+    var cuadroDatoOrigen = document.querySelector(".cuadro-dato.aparecer-ciudad-origen");
 
-        // Aplica la clase "aparecer" para activar la animación
-        cuadroClima.classList.add("aparecer");
-        entradaDatos.classList.add("aparecer");
+    // Aplica las clases "aparecer" para activar las animaciones por separado
+    cuadroClima.classList.add("aparecer");
+    entradaDatos.classList.add("aparecer");
+    cuadroTituloDestino.classList.add("aparecer-ciudad-destino");
+    cuadroDatoDestino.classList.add("aparecer-ciudad-destino");
+    cuadroTituloOrigen.classList.add("aparecer-ciudad-origen");
+    cuadroDatoOrigen.classList.add("aparecer-ciudad-origen");
 
-        // Después de un breve retraso, agrega las propiedades de animación
-        setTimeout(function () {
-            cuadroClima.style.opacity = 1;
-            cuadroClima.style.transform = "translateY(0)";
-            entradaDatos.style.opacity = 1;
-            entradaDatos.style.transform = "translateY(0)";
-        }, 100); // Ajusta el tiempo de retraso según sea necesario
-    });
+    // Después de un breve retraso, agrega las propiedades de animación
+    setTimeout(function () {
+        cuadroClima.style.opacity = 1;
+        cuadroClima.style.transform = "translateY(0)";
+        entradaDatos.style.opacity = 1;
+        entradaDatos.style.transform = "translateY(0)";
+        cuadroTituloDestino.style.opacity = 1;
+        cuadroTituloDestino.style.transform = "translateY(0)";
+        cuadroDatoDestino.style.opacity = 1;
+        cuadroDatoDestino.style.transform = "translateY(0)";
+        cuadroTituloOrigen.style.opacity = 1;
+        cuadroTituloOrigen.style.transform = "translateY(0)";
+        cuadroDatoOrigen.style.opacity = 1;
+        cuadroDatoOrigen.style.transform = "translateY(0)";
+    }, 100); // Ajusta el tiempo de retraso según sea necesario
+});
 
     document.addEventListener("DOMContentLoaded", function () {
         aplicarAnimaciones();
