@@ -101,12 +101,74 @@ h1 {
     /* Ajusta otros estilos según sea necesario */
 }
 
+/* Estilo para los cuadros de datos y títulos */
+.cuadro-dato {
+    border: 1px solid #000000;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+    max-width: 30%; /* Limitar el ancho al 80% del contenedor */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.cuadro-dato ul {
+    list-style-type: none; /* Eliminar los puntos de la lista */
+    padding: 0; /* Eliminar el padding predeterminado */
+}
+
+.cuadro-dato ul li {
+    margin-bottom: 10px; /* Espacio entre elementos de la lista */
+}
+        
+.cuadro-titulo {
+    border: 1px solid #000000;
+    padding: 7px;
+    margin: 7px;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+    max-width: 65%; /* Limitar el ancho al 80% del contenedor */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.entrada-datos {
+    border: 1px solid #000000;
+    padding: 7px;
+    margin: 7px;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+    max-width: 35%; /* Limitar el ancho al 80% del contenedor */
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0; /* Inicialmente, el título será transparente */
+    transform: translateY(-20px); 
+    transition: opacity 1s ease, transform 1s ease; 
+}
+
+.cuadro-encabezado {
+    border: 1px solid #000000;
+    padding: 7px;
+    margin: 7px;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+    max-width: 25%; /* Limitar el ancho al 80% del contenedor */
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0; /* Inicialmente, el título será transparente */
+    transform: translateY(-20px); /* Inicialmente, el título estará desplazado hacia arriba */
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+
 .cuadro-encabezado.aparecer {
     opacity: 1; /* El título se vuelve completamente visible */
     transform: translateY(0); /* El título vuelve a su posición original */
 }
 
-.entrada-datos {
+.entrada-datos.aparecer {
     opacity: 1; 
     transform: translateY(0); 
 }

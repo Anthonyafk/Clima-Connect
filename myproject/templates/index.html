@@ -20,67 +20,6 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
         }
-
-        /* Estilo para los cuadritos de datos y títulos */
-        .cuadro-dato {
-            border: 1px solid #000000;
-            padding: 5px;
-            margin: 5px;
-            border-radius: 2px;
-            background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
-            max-width: 30%; /* Limitar el ancho al 80% del contenedor */
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-        }
-
-        .cuadro-dato ul {
-            list-style-type: none; /* Eliminar los puntos de la lista */
-            padding: 0; /* Eliminar el padding predeterminado */
-        }
-
-        .cuadro-dato ul li {
-            margin-bottom: 10px; /* Espacio entre elementos de la lista */
-        }
-        
-        .cuadro-titulo {
-            border: 1px solid #000000;
-            padding: 7px;
-            margin: 7px;
-            border-radius: 2px;
-            background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
-            max-width: 65%; /* Limitar el ancho al 80% del contenedor */
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .entrada-datos {
-            border: 1px solid #000000;
-            padding: 7px;
-            margin: 7px;
-            border-radius: 2px;
-            background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
-            max-width: 35%; /* Limitar el ancho al 80% del contenedor */
-            margin-left: auto;
-            margin-right: auto;
-            opacity: 0; /* Inicialmente, el título será transparente */
-            transform: translateY(-20px); 
-            transition: opacity 1s ease, transform 1s ease; 
-        }
-        
-        .cuadro-encabezado {
-            border: 1px solid #000000;
-            padding: 7px;
-            margin: 7px;
-            border-radius: 2px;
-            background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
-            max-width: 25%; /* Limitar el ancho al 80% del contenedor */
-            margin-left: auto;
-            margin-right: auto;
-            opacity: 0; /* Inicialmente, el título será transparente */
-            transform: translateY(-20px); /* Inicialmente, el título estará desplazado hacia arriba */
-            transition: opacity 1s ease, transform 1s ease; /* Transiciones para opacity y transform */
-        }
     </style>
 </head>
 
@@ -95,9 +34,9 @@
     <div class="entrada-datos">
         <form method="POST">
             <label for="ciudad">Ciudad / Ticket:</label>
-            <input type="text" id="ciudad" name="ciudad" placeholder="Ejemplo: París" required>
+            <input type="text" id="ciudad" name="ciudad" placeholder="" required>
             <!-- Llama a la función obtenerDatosClimaticosYActualizarImagen al hacer clic en el botón -->
-            <button class="button" type="submit" onclick="obtenerDatosClimaticosYActualizarImagen()">Obtener Pronóstico</button>
+            <button class="button" type="submit" >Obtener Pronóstico</button>
         </form>
     </div>
 
@@ -143,25 +82,33 @@
             </div>
             {% endif %}
         {% endif %}
+            
     </div>
 
     <script>
+        var cuadroClima;
+        var entradaDatos;
         // Espera a que el documento HTML esté completamente cargado
         document.addEventListener("DOMContentLoaded", function () {
         var cuadroClima = document.querySelector(".cuadro-encabezado");
         var entradaDatos = document.querySelector(".entrada-datos");
-            
+
         // Aplica la clase "aparecer" para activar la animación
         cuadroClima.classList.add("aparecer");
         entradaDatos.classList.add("aparecer");
-            
+
         // Después de un breve retraso, agrega las propiedades de animación
         setTimeout(function () {
+            cuadroClima.style.opacity = 1;
+            cuadroClima.style.transform = "translateY(0)";
             entradaDatos.style.opacity = 1;
             entradaDatos.style.transform = "translateY(0)";
         }, 100); // Ajusta el tiempo de retraso según sea necesario
     });
 
+    document.addEventListener("DOMContentLoaded", function () {
+        aplicarAnimaciones();
+    });
     </script>
     
 </body>
