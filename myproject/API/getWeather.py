@@ -13,9 +13,18 @@ app = Flask(__name__)
 # Clave de la API de OpenWeatherMap
 api_key = OPENWEATHER_API_KEY
 
-# Función auxiliar para verificar si una cadena contiene números
 def contiene_numeros(texto):
-    return any(char.isdigit() for char in texto)
+    """
+    Función que verifica si un texto contiene números.
+
+    Args:
+        texto (str): El texto a verificar.
+
+    Returns:
+        bool: True si el texto contiene al menos un número, False en caso contrario.
+    """
+    # Verifica si el texto no es None y si contiene al menos un número
+    return texto is not None and any(char.isdigit() for char in texto)
 
 
 # Ruta principal ("/") y métodos permitidos (GET y POST)
