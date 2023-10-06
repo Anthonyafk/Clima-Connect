@@ -10,7 +10,72 @@
 
     <!-- Configuración de la página -->
     <meta charset="UTF-8">
-    <title>Clima-Connect</title>
+    <title>Pronóstico del Clima</title>
+
+    <style>
+        /* Estilo para el fondo de la página */
+        body {
+            background-image: url("{{ url_for('static', filename='images/forest.jpg') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        /* Estilo para los cuadritos de datos y títulos */
+        .cuadro-dato {
+            border: 1px solid #000000;
+            padding: 5px;
+            margin: 5px;
+            border-radius: 2px;
+            background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+            max-width: 30%; /* Limitar el ancho al 80% del contenedor */
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .cuadro-dato ul {
+            list-style-type: none; /* Eliminar los puntos de la lista */
+            padding: 0; /* Eliminar el padding predeterminado */
+        }
+
+        .cuadro-dato ul li {
+            margin-bottom: 10px; /* Espacio entre elementos de la lista */
+        }
+        
+        .cuadro-titulo {
+            border: 1px solid #000000;
+            padding: 7px;
+            margin: 7px;
+            border-radius: 2px;
+            background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+            max-width: 65%; /* Limitar el ancho al 80% del contenedor */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cuadro-entrada {
+            border: 1px solid #000000;
+            padding: 7px;
+            margin: 7px;
+            border-radius: 2px;
+            background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+            max-width: 35%; /* Limitar el ancho al 80% del contenedor */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cuadro-clima {
+            border: 1px solid #000000;
+            padding: 7px;
+            margin: 7px;
+            border-radius: 2px;
+            background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+            max-width: 25%; /* Limitar el ancho al 80% del contenedor */
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
 
     <script>
         // Función para obtener datos climáticos y actualizar la imagen
@@ -39,57 +104,65 @@
 </head>
 
 <body>
-    <!-- Imágenes en las esquinas superiores -->
-    <img class="imagen-esquina-izquierda" src="{{ url_for('static', filename='images/pngwing2.png') }}" alt="Imagen 1">
-    <img class="imagen-esquina-derecha" src="{{ url_for('static', filename='images/pngwing.png') }}" alt="Imagen 2">
-    
+
     <!-- Encabezado principal -->
-    <h1>Pronóstico del clima</h1>
+    <div class="cuadro-clima">
+        <h1>Clima Connect</h1>
+    </div>
     
     <!-- Formulario para ingresar la ciudad o ticket -->
-    <form method="POST">
-        <label for="ciudad">Ciudad / Ticket:</label>
-        <input type="text" id="ciudad" name="ciudad" placeholder="Ejemplo: París" required>
-        <!-- Llama a la función obtenerDatosClimaticosYActualizarImagen al hacer clic en el botón -->
-        <button class="button" type="submit" onclick="obtenerDatosClimaticosYActualizarImagen()">Obtener Pronóstico</button>
-    </form>
+    <div class="cuadro-entrada">
+        <form method="POST">
+            <label for="ciudad">Ciudad / Ticket:</label>
+            <input type="text" id="ciudad" name="ciudad" placeholder="Ejemplo: París" required>
+            <!-- Llama a la función obtenerDatosClimaticosYActualizarImagen al hacer clic en el botón -->
+            <button class="button" type="submit" onclick="obtenerDatosClimaticosYActualizarImagen()">Obtener Pronóstico</button>
+        </form>
+    </div>
 
     <!-- Mostrar los datos del tiempo aquí -->
     <div>
         {% if data %}
             <!-- Título del pronóstico -->
-            <h2>Pronóstico del clima en ciudad deseada/destino: {{ ciudad | capitalize }}</h2>
+            <div class="cuadro-titulo">
+                <h2>Pronóstico del clima en ciudad deseada/destino: {{ ciudad | capitalize }}</h2>
+            </div>
             
-            <!-- Datos del clima -->
-            <!-- Aplicar clase "rojo" para la etiqueta "Temperatura" y "negro" para los datos -->
-            <p><strong class="rojo">Temperatura del clima en ciudad deseada/destino:</strong> <span class="negro">{{ temperatura_celsius }} °C</span></p>
-            <p><strong class="rojo">Humedad del clima en ciudad deseada/destino:</strong> <span class="negro">{{ data.main.humidity }}%</span></p>
-            <p><strong class="rojo">Descripción del clima en ciudad deseada/destino:</strong> <span class="negro">{{ data['weather'][0]['description'] }}</span></p>
-            <p><strong class="rojo">Presión del clima en ciudad deseada/destino:</strong> <span class="negro">{{ data.main.pressure }} hPa</span></p>
+            <!-- Datos del clima en cuadritos -->
+            <div class="cuadro-dato">
+                <ul>
+                    <li><strong class="rojo">Temperatura:</strong> <span class="negro">{{ temperatura_celsius }} °C</span></li>
+                    <li><strong class="rojo">Humedad:</strong> <span class="negro">{{ data.main.humidity }}%</span></li>
+                    <li><strong class="rojo">Descripción:</strong> <span class="negro">{{ data['weather'][0]['description'] }}</span></li>
+                    <li><strong class="rojo">Presión:</strong> <span class="negro">{{ data.main.pressure }} hPa</span></li>
+                </ul>
+            </div>
             
-            <!-- Mostrar información de origen si está disponible -->
+            <!-- Datos del clima de origen en cuadritos -->
             {% if origen %}
-                <p><strong class="rojo">Origen:</strong> <span class="negro">{{ origen }}</span></p>
-            
-                <!-- Mostrar humedad, descripción y presión de origen si están disponibles -->
+            <div class="cuadro-titulo">
                 <h2>Pronóstico del clima en ciudad de origen: {{ encontrar_nombre_similar(origen) | capitalize }}</h2>
-                
-                {% if temperatura_celsius_origen %}
-                    <p><strong class="rojo">Temperatura en ciudad de origen:</strong> <span class="negro">{{ temperatura_celsius_origen }} °C</span></p>
-                {% endif %}
-                {% if humedad_origen %}
-                    <p><strong class="rojo">Humedad en ciudad de origen:</strong> <span class="negro">{{ humedad_origen }}%</span></p>
-                {% endif %}
-                {% if descripcion_origen %}
-                    <p><strong class="rojo">Descripción en ciudad origen:</strong> <span class="negro">{{ descripcion_origen }}</span></p>
-                {% endif %}
-                {% if presion_origen %}
-                    <p><strong class="rojo">Presión en ciudad de origen:</strong> <span class="negro">{{ presion_origen }} hPa</span></p>
-                {% endif %}
+            </div>
+            
+            <div class="cuadro-dato">
+                <ul>
+                    {% if temperatura_celsius_origen %}
+                        <li><strong class="rojo">Temperatura:</strong> <span class="negro">{{ temperatura_celsius_origen }} °C</span></li>
+                    {% endif %}
+                    {% if humedad_origen %}
+                        <li><strong class="rojo">Humedad:</strong> <span class="negro">{{ humedad_origen }}%</span></li>
+                    {% endif %}
+                    {% if descripcion_origen %}
+                        <li><strong class="rojo">Descripción:</strong> <span class="negro">{{ descripcion_origen }}</span></li>
+                    {% endif %}
+                    {% if presion_origen %}
+                        <li><strong class="rojo">Presión:</strong> <span class="negro">{{ presion_origen }} hPa</span></li>
+                    {% endif %}
+                </ul>
+            </div>
             {% endif %}
         {% endif %}
-                <!-- Imágenes de los climas dependiendo la ciudad -->
-                <img id="clima-imagen" src="{{ url_for('static', filename='images/Welcome.jpg') }}" alt="Imagen de clima" data-atributo="">
     </div>
 </body>
 </html>
+
