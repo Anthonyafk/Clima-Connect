@@ -87,14 +87,10 @@ pip install -r requirements.txt
 
 En el archivo llamado data_loader.py que esta dentro de la carpeta Data que a su vez esta dentro de la carperta static se tiene que cambiar la direccion de memoria del archivo del dataset2 el cual tambien se encuentra en la carpeta Data. Si no sabes como escribir esta dirreccion aqui hay un pequeño tutorial
 
-Para Windonws:
+### Para Windonws:
 Busca la carpta de proyecto (Clima-Connect) despues entra a la carpeta "myproject" despues entra a la carpeta "static" y al ultimo a la carpeta "Data" busca el archivo llamado "dataset2.csv" y presiona click izquierdo sobre el, despues escoje la opccion "propiedades" y aparecera una pantalla en la cual habra varios datos del archivo, el que nos intereza es el que diga "ubicacion" ahi debera aparecerte algo parecido a esto: 
 
 - "C:\Users\danie\Downloads\Clima-Connect\myproject\static\Data"
-
-o esto: 
-
-- "/home/above37845/Documents/Modelado y Programación/Clima-Connect/myproject/static/Data/dataset2.csv"
 
 copia ese texto y pegalo en un bloc de notas, ahora añade despues de "\Data"  lo siguiente: "\dataset2.csv" la direccion del archivo deberia quedarte algo asi: 
 
@@ -102,8 +98,10 @@ copia ese texto y pegalo en un bloc de notas, ahora añade despues de "\Data"  l
 
 - ***/home/above37845/Documents/Modelado y Programación/Clima-Connect/myproject/static/Data/dataset2.csv***
 
-Ahora abre el archivo data_loader.py y encuentra donde dice: 
 
+###Para Linux:
+
+Ahora abre el archivo data_loader.py y encuentra donde dice: 
 
 ***csv_file_path = r'Coloca aqui tu direccion de codigo'***
 
