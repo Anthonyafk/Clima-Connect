@@ -52,54 +52,28 @@ cd Clima-Connect/
 pip install -r requirements.txt
 
 ```
-
-4. Ejecute el Setup:
-
-```
-python setup.py
-
-```
-5. Navegue hasta myProject
+4. Navegue hasta myProject
 
 ```
 cd myproject
 
 ```
 
-6. Ejecute 
+5. Cree su entorno virtual 
 
-```
-flask --app clima run 
-
-```
-
-En dado caso de que surjan problemas haga lo sig:
-
-**(solamente navegue hasta donde tiene instalado su repo)**
-```
-cd Downloads\Clima-Connect
-```
-**(cree un entorno virtual)**
 ```
 python3 -m venv .venv
+
 ```
-**(activelo con ese comando)**
+
+6. Active su entorno virtual
+
 ```
 . .venv/bin/activate
+
 ```
-**(si no lo tiene instalado escriba ese comando)**
-```
-pip install Flask
-```
-**(si no lo tiene instalado escriba ese comando)**
-```
-pip install requests
-```
-**(regrese a myproject)**
-```
-cd myproject
-```
-**(runne la app)**
+7. Runne la app
+
 ```
 flask --app clima run 
 ```
