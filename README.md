@@ -32,30 +32,6 @@ Antes de ejecutar esta aplicación, asegúrate de cumplir con los siguientes req
 
 2. **pip (Administrador de Paquetes de Python)**: Verifica que tengas `pip` instalado. Pip generalmente se instala automáticamente con Python, pero puedes verificar su existencia ejecutando el siguiente comando en tu terminal o símbolo del sistema:
 
-**Instalación de pip**
-
-Si `pip` no está instalado, puedes [instalarlo manualmente](https://www.geeksforgeeks.org/how-to-install-pip-on-windows/) siguiendo las instrucciones en el sitio web .
-
-**Paso 1:**
-Verifique que en efecto tenga python instalado con el comando:
-
-```
-python --version
-
-```
-Si en efecto lo tiene vera algo asi:
-
-Python 3.10.0
-
-**Paso 2**
-
-En su terminal esciba lo siguiente:
-
-```
-curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-python get-pip.py
-
-```
 ## Configuración del Proyecto
 
 1. Clona este repositorio en tu máquina local:
@@ -76,63 +52,38 @@ cd Clima-Connect/
 pip install -r requirements.txt
 
 ```
-
-4. Ejecute el Setup:
-
-```
-python setup.py
-
-```
-5. Navegue hasta myProject
+4. Navegue hasta myProject
 
 ```
 cd myproject
 
 ```
 
-6. Ejecute 
+5. Cree su entorno virtual 
 
-```
-flask --app clima run 
-
-```
-
-En dado caso de que surjan problemas haga lo sig:
-
-**(solamente navegue hasta donde tiene instalado su repo)**
-```
-cd Downloads\Clima-Connect
-```
-**(cree un entorno virtual)**
 ```
 python3 -m venv .venv
+
 ```
-**(activelo con ese comando)**
+
+6. Active su entorno virtual
+
 ```
 . .venv/bin/activate
+
 ```
-**(si no lo tiene instalado escriba ese comando)**
-```
-pip install Flask
-```
-**(si no lo tiene instalado escriba ese comando)**
-```
-pip install requests
-```
-**(regrese a myproject)**
-```
-cd myproject
-```
-**(runne la app)**
+7. Runne la app
+
 ```
 flask --app clima run 
 ```
 
 **Disclaimer:**
 En el archivo llamado dataLoader.py que esta dentro de la carpeta Data se tiene que cambiar la direccion de memoria del archivo del dataSet dependiendo de donde se te haya instalado. es decir en:
+
 ```
 csv_file_path = r'/home/above37845/Documents/Modelado y Programación/Clima-Connect/myproject/Data/dataset2.csv'
 
 ```
 
-Lo que esta entre parentecis, es decir : '/home/above37845/Documents/Modelado y Programación/Clima-Connect/myproject/Data/dataset2.csv' se cambiara por la direccion en la que este ese archivo en tu dispositivo
+Lo que esta entre parentecis: '/home/above37845/Documents/Modelado y Programación/Clima-Connect/myproject/Data/dataset2.csv' debera cambiarse por la dirección en la que este ese archivo en tu dispositivo.

@@ -1,9 +1,3 @@
-// Supongamos que tienes un elemento <img> con el id "clima-imagen"
-var imagenClima = document.getElementById("clima-imagen");
-
-// Llama a la función para obtener datos climáticos y actualizar la imagen
-obtenerDatosClimaticosYActualizarImagen("Cuernavaca"); // Puedes pasar la ciudad deseada aquí
-
 // Función para asignar una imagen en función de la descripción del clima
 function asignarImagenClima() {
     var imagenClima = document.getElementById("clima-imagen");
@@ -48,3 +42,18 @@ function asignarImagenClima() {
     // Cambia la imagen en la página
     imagenClima.src = imagenURL;
 }
+
+    function aplicarAnimaciones(elemento) {
+        // Elimina la clase "aparecer" para reiniciar la animación
+        elemento.classList.remove("aparecer");
+
+        // Aplica la clase "aparecer" para activar la animación
+        elemento.classList.add("aparecer");
+
+        // Después de un breve retraso, agrega las propiedades de animación
+        setTimeout(function () {
+            elemento.style.opacity = 1;
+            elemento.style.transform = "translateY(0)";
+        }, 100); // Ajusta el tiempo de retraso según sea necesario
+    }
+    

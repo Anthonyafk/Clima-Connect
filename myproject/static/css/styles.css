@@ -100,3 +100,78 @@ h1 {
     background-image: url('../images/clearSky.jpg');
     /* Ajusta otros estilos según sea necesario */
 }
+
+/* Estilo para los cuadros de datos y títulos */
+.cuadro-dato {
+    border: 1px solid #000000;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+    max-width: 30%; /* Limitar el ancho al 80% del contenedor */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.cuadro-dato ul {
+    list-style-type: none; /* Eliminar los puntos de la lista */
+    padding: 0; /* Eliminar el padding predeterminado */
+}
+
+.cuadro-dato ul li {
+    margin-bottom: 10px; /* Espacio entre elementos de la lista */
+}
+        
+.cuadro-titulo {
+    border: 1px solid #000000;
+    padding: 7px;
+    margin: 7px;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+    max-width: 65%; /* Limitar el ancho al 80% del contenedor */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.entrada-datos {
+    border: 1px solid #000000;
+    padding: 7px;
+    margin: 7px;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+    max-width: 35%; /* Limitar el ancho al 80% del contenedor */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cuadro-encabezado {
+    border: 1px solid #000000;
+    padding: 7px;
+    margin: 7px;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+    max-width: 25%; /* Limitar el ancho al 80% del contenedor */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.aparecer {
+    opacity: 1;
+    transform: translateY(-20px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Establece las animaciones para ciudad destino */
+.aparecer-ciudad-destino {
+    opacity: 1;
+    transform: translateY(-20px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Establece las animaciones para ciudad origen */
+.aparecer-ciudad-origen {
+    opacity: 1;
+    transform: translateY(-20px);
+    transition: opacity 1s ease, transform 1s ease;
+}

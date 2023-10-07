@@ -20,103 +20,23 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
         }
-
-        /* Estilo para los cuadritos de datos y títulos */
-        .cuadro-dato {
-            border: 1px solid #000000;
-            padding: 5px;
-            margin: 5px;
-            border-radius: 2px;
-            background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
-            max-width: 30%; /* Limitar el ancho al 80% del contenedor */
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-        }
-
-        .cuadro-dato ul {
-            list-style-type: none; /* Eliminar los puntos de la lista */
-            padding: 0; /* Eliminar el padding predeterminado */
-        }
-
-        .cuadro-dato ul li {
-            margin-bottom: 10px; /* Espacio entre elementos de la lista */
-        }
-        
-        .cuadro-titulo {
-            border: 1px solid #000000;
-            padding: 7px;
-            margin: 7px;
-            border-radius: 2px;
-            background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
-            max-width: 65%; /* Limitar el ancho al 80% del contenedor */
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cuadro-entrada {
-            border: 1px solid #000000;
-            padding: 7px;
-            margin: 7px;
-            border-radius: 2px;
-            background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
-            max-width: 35%; /* Limitar el ancho al 80% del contenedor */
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .cuadro-clima {
-            border: 1px solid #000000;
-            padding: 7px;
-            margin: 7px;
-            border-radius: 2px;
-            background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
-            max-width: 25%; /* Limitar el ancho al 80% del contenedor */
-            margin-left: auto;
-            margin-right: auto;
-        }
     </style>
-
-    <script>
-        // Función para obtener datos climáticos y actualizar la imagen
-        function obtenerDatosClimaticosYActualizarImagen() {
-            // Obtiene la ciudad ingresada por el usuario
-            var ciudad = document.getElementById("ciudad").value;
-            
-            // Realiza una solicitud AJAX al servidor Flask para obtener los datos climáticos
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "/", true); // Usa la misma ruta que el formulario
-            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
-            xhr.onload = function () {
-                if (xhr.status === 200) {
-                    var datosClima = JSON.parse(xhr.responseText);
-                    asignarImagenClima(datosClima.descripcion);
-                } else {
-                    console.error("Error al obtener datos climáticos.");
-                }
-            };
-
-            var data = JSON.stringify({ ciudad: ciudad });
-            xhr.send(data);
-        }
-    </script>
 </head>
 
 <body>
 
     <!-- Encabezado principal -->
-    <div class="cuadro-clima">
+    <div class="cuadro-encabezado aparecer">
         <h1>Clima Connect</h1>
     </div>
     
     <!-- Formulario para ingresar la ciudad o ticket -->
-    <div class="cuadro-entrada">
+    <div class="entrada-datos aparecer">
         <form method="POST">
             <label for="ciudad">Ciudad / Ticket:</label>
-            <input type="text" id="ciudad" name="ciudad" placeholder="Ejemplo: París" required>
+            <input type="text" id="ciudad" name="ciudad" placeholder="" required>
             <!-- Llama a la función obtenerDatosClimaticosYActualizarImagen al hacer clic en el botón -->
-            <button class="button" type="submit" onclick="obtenerDatosClimaticosYActualizarImagen()">Obtener Pronóstico</button>
+            <button class="button" type="submit">Obtener Pronóstico</button>
         </form>
     </div>
 
@@ -124,12 +44,12 @@
     <div>
         {% if data %}
             <!-- Título del pronóstico -->
-            <div class="cuadro-titulo">
+            <div class="cuadro-titulo aparecer-ciudad-destino">
                 <h2>Pronóstico del clima en ciudad deseada/destino: {{ ciudad | capitalize }}</h2>
             </div>
             
             <!-- Datos del clima en cuadritos -->
-            <div class="cuadro-dato">
+            <div class="cuadro-dato aparecer-ciudad-destino">
                 <ul>
                     <li><strong class="rojo">Temperatura:</strong> <span class="negro">{{ temperatura_celsius }} °C</span></li>
                     <li><strong class="rojo">Humedad:</strong> <span class="negro">{{ data.main.humidity }}%</span></li>
@@ -140,11 +60,11 @@
             
             <!-- Datos del clima de origen en cuadritos -->
             {% if origen %}
-            <div class="cuadro-titulo">
+            <div class="cuadro-titulo aparecer-ciudad-origen">
                 <h2>Pronóstico del clima en ciudad de origen: {{ encontrar_nombre_similar(origen) | capitalize }}</h2>
             </div>
             
-            <div class="cuadro-dato">
+            <div class="cuadro-dato aparecer-ciudad-origen">
                 <ul>
                     {% if temperatura_celsius_origen %}
                         <li><strong class="rojo">Temperatura:</strong> <span class="negro">{{ temperatura_celsius_origen }} °C</span></li>
@@ -162,7 +82,50 @@
             </div>
             {% endif %}
         {% endif %}
+            
     </div>
+
+    <script>
+
+        // Espera a que el documento HTML esté completamente cargado
+        document.addEventListener("DOMContentLoaded", function () {
+        var cuadroClima = document.querySelector(".cuadro-encabezado.aparecer");
+        var entradaDatos = document.querySelector(".entrada-datos.aparecer");
+        var cuadroTituloDestino = document.querySelector(".cuadro-titulo.aparecer-ciudad-destino");
+        var cuadroDatoDestino = document.querySelector(".cuadro-dato.aparecer-ciudad-destino");
+        var cuadroTituloOrigen = document.querySelector(".cuadro-titulo.aparecer-ciudad-origen");
+        var cuadroDatoOrigen = document.querySelector(".cuadro-dato.aparecer-ciudad-origen");
+            
+        // Aplica las clases "aparecer" para activar las animaciones por separado
+        cuadroClima.classList.add("aparecer");
+        entradaDatos.classList.add("aparecer");
+        cuadroTituloDestino.classList.add("aparecer");
+        cuadroDatoDestino.classList.add("aparecer");
+        cuadroTituloOrigen.classList.add("aparecer");
+        cuadroDatoOrigen.classList.add("aparecer");
+
+    // Después de un breve retraso, agrega las propiedades de animación
+    setTimeout(function () {
+        cuadroClima.style.opacity = 1;
+        cuadroClima.style.transform = "translateY(0)";
+        entradaDatos.style.opacity = 1;
+        entradaDatos.style.transform = "translateY(0)";
+        cuadroTituloDestino.style.opacity = 1;
+        cuadroTituloDestino.style.transform = "translateY(0)";
+        cuadroDatoDestino.style.opacity = 1;
+        cuadroDatoDestino.style.transform = "translateY(0)";
+        cuadroTituloOrigen.style.opacity = 1;
+        cuadroTituloOrigen.style.transform = "translateY(0)";
+        cuadroDatoOrigen.style.opacity = 1;
+        cuadroDatoOrigen.style.transform = "translateY(0)";
+    }, 100); // Ajusta el tiempo de retraso según sea necesario
+});
+
+    document.addEventListener("DOMContentLoaded", function () {
+        aplicarAnimaciones();
+    });
+    </script>
+    
 </body>
 </html>
 
