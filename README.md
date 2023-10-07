@@ -114,8 +114,6 @@ copia ese texto y pegalo en un bloc de notas, ahora añade despues de "/Data"  l
 
 - ***/home/above37845/Documents/Modelado y Programación/Clima-Connect/myproject/static/Data/dataset2.csv***
 
-### Una vez tengas la direccion de dataset2: 
-
 Ahora abre el archivo data_loader.py y encuentra donde dice: 
 
 - ***csv_file_path = r'Coloca aqui tu direccion de codigo'***
