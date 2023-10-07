@@ -160,18 +160,18 @@ h1 {
     opacity: 1;
     transform: translateY(-20px);
     transition: opacity 1s ease, transform 1s ease;
-}y
+}
 
 /* Establece las animaciones para ciudad destino */
 .aparecer-ciudad-destino {
-    opacity: 0;
+    opacity: 1;
     transform: translateY(-20px);
     transition: opacity 1s ease, transform 1s ease;
 }
 
 /* Establece las animaciones para ciudad origen */
 .aparecer-ciudad-origen {
-    opacity: 0;
+    opacity: 1;
     transform: translateY(-20px);
     transition: opacity 1s ease, transform 1s ease;
 }
