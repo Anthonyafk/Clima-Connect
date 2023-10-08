@@ -161,17 +161,3 @@ h1 {
     transform: translateY(-20px);
     transition: opacity 1s ease, transform 1s ease;
 }
-
-/* Establece las animaciones para ciudad destino */
-.aparecer-ciudad-destino {
-    opacity: 1;
-    transform: translateY(-20px);
-    transition: opacity 1s ease, transform 1s ease;
-}
-
-/* Establece las animaciones para ciudad origen */
-.aparecer-ciudad-origen {
-    opacity: 1;
-    transform: translateY(-20px);
-    transition: opacity 1s ease, transform 1s ease;
-}
