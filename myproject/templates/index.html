@@ -44,12 +44,12 @@
     <div>
         {% if data %}
             <!-- Título del pronóstico -->
-            <div class="cuadro-titulo aparecer-ciudad-destino">
+            <div class="cuadro-titulo aparecer">
                 <h2>Pronóstico del clima en ciudad deseada/destino: {{ ciudad | capitalize }}</h2>
             </div>
             
             <!-- Datos del clima en cuadritos -->
-            <div class="cuadro-dato aparecer-ciudad-destino">
+            <div class="cuadro-dato aparecer">
                 <ul>
                     <li><strong class="rojo">Temperatura:</strong> <span class="negro">{{ temperatura_celsius }} °C</span></li>
                     <li><strong class="rojo">Humedad:</strong> <span class="negro">{{ data.main.humidity }}%</span></li>
@@ -57,75 +57,34 @@
                     <li><strong class="rojo">Presión:</strong> <span class="negro">{{ data.main.pressure }} hPa</span></li>
                 </ul>
             </div>
-            
-            <!-- Datos del clima de origen en cuadritos -->
-            {% if origen %}
-            <div class="cuadro-titulo aparecer-ciudad-origen">
+        {% endif %}
+
+        <!-- Datos del clima de origen en cuadritos -->
+        {% if origen %}
+            <div class="cuadro-titulo aparecer">
                 <h2>Pronóstico del clima en ciudad de origen: {{ encontrar_nombre_similar(origen) | capitalize }}</h2>
             </div>
-            
-            <div class="cuadro-dato aparecer-ciudad-origen">
+            <div class="cuadro-dato aparecer">
                 <ul>
-                    {% if temperatura_celsius_origen %}
-                        <li><strong class="rojo">Temperatura:</strong> <span class="negro">{{ temperatura_celsius_origen }} °C</span></li>
-                    {% endif %}
-                    {% if humedad_origen %}
-                        <li><strong class="rojo">Humedad:</strong> <span class="negro">{{ humedad_origen }}%</span></li>
-                    {% endif %}
-                    {% if descripcion_origen %}
-                        <li><strong class="rojo">Descripción:</strong> <span class="negro">{{ descripcion_origen }}</span></li>
-                    {% endif %}
-                    {% if presion_origen %}
-                        <li><strong class="rojo">Presión:</strong> <span class="negro">{{ presion_origen }} hPa</span></li>
-                    {% endif %}
+                    <li><strong class="rojo">Temperatura:</strong> <span class="negro">{{ temperatura_celsius_origen }} °C</span></li>
+                    <li><strong class="rojo">Humedad:</strong> <span class="negro">{{ humedad_origen }}%</span></li>
+                    <li><strong class="rojo">Descripción:</strong> <span class="negro">{{ descripcion_origen }}</span></li>
+                    <li><strong class="rojo">Presión:</strong> <span class="negro">{{ presion_origen }} hPa</span></li>        
                 </ul>
             </div>
-            {% endif %}
         {% endif %}
-            
     </div>
 
     <script>
-
         // Espera a que el documento HTML esté completamente cargado
         document.addEventListener("DOMContentLoaded", function () {
-        var cuadroClima = document.querySelector(".cuadro-encabezado.aparecer");
-        var entradaDatos = document.querySelector(".entrada-datos.aparecer");
-        var cuadroTituloDestino = document.querySelector(".cuadro-titulo.aparecer-ciudad-destino");
-        var cuadroDatoDestino = document.querySelector(".cuadro-dato.aparecer-ciudad-destino");
-        var cuadroTituloOrigen = document.querySelector(".cuadro-titulo.aparecer-ciudad-origen");
-        var cuadroDatoOrigen = document.querySelector(".cuadro-dato.aparecer-ciudad-origen");
-            
-        // Aplica las clases "aparecer" para activar las animaciones por separado
-        cuadroClima.classList.add("aparecer");
-        entradaDatos.classList.add("aparecer");
-        cuadroTituloDestino.classList.add("aparecer");
-        cuadroDatoDestino.classList.add("aparecer");
-        cuadroTituloOrigen.classList.add("aparecer");
-        cuadroDatoOrigen.classList.add("aparecer");
-
-    // Después de un breve retraso, agrega las propiedades de animación
-    setTimeout(function () {
-        cuadroClima.style.opacity = 1;
-        cuadroClima.style.transform = "translateY(0)";
-        entradaDatos.style.opacity = 1;
-        entradaDatos.style.transform = "translateY(0)";
-        cuadroTituloDestino.style.opacity = 1;
-        cuadroTituloDestino.style.transform = "translateY(0)";
-        cuadroDatoDestino.style.opacity = 1;
-        cuadroDatoDestino.style.transform = "translateY(0)";
-        cuadroTituloOrigen.style.opacity = 1;
-        cuadroTituloOrigen.style.transform = "translateY(0)";
-        cuadroDatoOrigen.style.opacity = 1;
-        cuadroDatoOrigen.style.transform = "translateY(0)";
-    }, 100); // Ajusta el tiempo de retraso según sea necesario
-});
-
-    document.addEventListener("DOMContentLoaded", function () {
-        aplicarAnimaciones();
-    });
+            var elementos = document.querySelectorAll(".aparecer");
+    
+            elementos.forEach(function (elemento) {
+                aplicarAnimaciones(elemento);
+            });
+        });
     </script>
     
 </body>
 </html>
-
