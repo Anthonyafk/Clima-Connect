@@ -21,6 +21,12 @@
             background-attachment: fixed;
         }
     </style>
+
+<script>
+        var data = null; // Inicializa data con un valor predeterminado
+    </script>
+    <script src="{{ url_for('static', filename='js/clima.js') }}"></script>
+    
 </head>
 
 <body>
@@ -35,8 +41,8 @@
         <form method="POST">
             <label for="ciudad">Ciudad / Ticket:</label>
             <input type="text" id="ciudad" name="ciudad" placeholder="" required>
-            <!-- Llama a la función obtenerDatosClimaticosYActualizarImagen al hacer clic en el botón -->
-            <button class="button" type="submit">Obtener Pronóstico</button>
+        <button class="button" type="button" onclick="obtenerDatosClimaticos('{{ ciudad | capitalize }}')">Obtener Pronóstico</button>
+
         </form>
     </div>
 
@@ -53,7 +59,7 @@
                 <ul>
                     <li><strong class="rojo">Temperatura:</strong> <span class="negro">{{ temperatura_celsius }} °C</span></li>
                     <li><strong class="rojo">Humedad:</strong> <span class="negro">{{ data.main.humidity }}%</span></li>
-                    <li><strong class="rojo">Descripción:</strong> <span class="negro">{{ data['weather'][0]['description'] }}</span></li>
+                    <li><strong class="rojo">Descripción:</strong> <span class="negro">{{ descripcion_clima }}</span></li>
                     <li><strong class="rojo">Presión:</strong> <span class="negro">{{ data.main.pressure }} hPa</span></li>
                 </ul>
             </div>
@@ -75,16 +81,25 @@
         {% endif %}
     </div>
 
+    <img id="clima-imagen" class="aparecer" src="../static/images/Welcome.jpg" alt="Imagen del clima">
+
     <script>
-        // Espera a que el documento HTML esté completamente cargado
-        document.addEventListener("DOMContentLoaded", function () {
-            var elementos = document.querySelectorAll(".aparecer");
-    
-            elementos.forEach(function (elemento) {
-                aplicarAnimaciones(elemento);
-            });
+            // Espera a que el documento HTML esté completamente cargado
+    document.addEventListener("DOMContentLoaded", function () {
+        var elementos = document.querySelectorAll(".aparecer");
+
+        elementos.forEach(function (elemento) {
+            aplicarAnimaciones(elemento);
         });
+
+        // Verifica si se ha definido la variable 'descripcionDelClima' en el HTML
+        var descripcionDelClima = "{{ descripcion_clima }}"; // Esto obtiene la descripción del clima del servidor
+
+        if (descripcionDelClima) {
+            // Llama a la función para asignar la imagen del clima
+            asignarImagenClima(descripcionDelClima);
+        }
+    });
     </script>
-    
 </body>
 </html>
