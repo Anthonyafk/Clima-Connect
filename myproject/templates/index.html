@@ -41,7 +41,7 @@
         <form method="POST">
             <label for="ciudad">Ciudad / Ticket:</label>
             <input type="text" id="ciudad" name="ciudad" placeholder="" required>
-        <button class="button" type="button" onclick="obtenerDatosClimaticos('{{ ciudad | capitalize }}')">Obtener Pronóstico</button>
+        <button class="button" type="submit" onclick="obtenerDatosClimaticos('{{ ciudad | capitalize }}')">Obtener Pronóstico</button>
 
         </form>
     </div>
