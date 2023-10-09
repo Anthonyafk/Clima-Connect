@@ -41,7 +41,7 @@
         <form method="POST">
             <label for="ciudad">Ciudad / Ticket:</label>
             <input type="text" id="ciudad" name="ciudad" placeholder="" required>
-        <button class="button" type="button" onclick="obtenerDatosClimaticos('{{ ciudad | capitalize }}')">Obtener Pronóstico</button>
+        <button class="button" type="submit" onclick="obtenerDatosClimaticos('{{ ciudad | capitalize }}')">Obtener Pronóstico</button>
 
         </form>
     </div>
@@ -63,6 +63,30 @@
                     <li><strong class="rojo">Presión:</strong> <span class="negro">{{ data.main.pressure }} hPa</span></li>
                 </ul>
             </div>
+
+        </div>
+        <div class="cuadro-dato aparecer">
+            <h3>Imagen del clima de Destino</h3>
+        </div>
+        <img id="clima-imagen-destino" class="aparecer" src="../static/images/Welcome.jpg" alt="Imagen del clima">
+        <script>
+                // Espera a que el documento HTML esté completamente cargado
+        document.addEventListener("DOMContentLoaded", function () {
+            var elementos = document.querySelectorAll(".aparecer");
+    
+            elementos.forEach(function (elemento) {
+                aplicarAnimaciones(elemento);
+            });
+    
+            // Verifica si se ha definido la variable 'descripcionDelClima' en el HTML
+            var descripcionDelClimaDestino = "{{ descripcion_clima }}"; // Esto obtiene la descripción del clima del servidor
+    
+            if (descripcionDelClimaDestino) {
+                // Llama a la función para asignar la imagen del clima
+                asignarImagenClima(descripcionDelClimaDestino, "clima-imagen-destino");
+            }
+        });
+        </script>
         {% endif %}
 
         <!-- Datos del clima de origen en cuadritos -->
@@ -78,30 +102,29 @@
                     <li><strong class="rojo">Presión:</strong> <span class="negro">{{ presion_origen }} hPa</span></li>        
                 </ul>
             </div>
-        {% endif %}
-    </div>
-    <div class="cuadro-dato aparecer">
-        <h3>Imagen del clima de Origen</h3>
-    </div>
-    <img id="clima-imagen" class="aparecer" src="../static/images/Welcome.jpg" alt="Imagen del clima">
-
-    <script>
-            // Espera a que el documento HTML esté completamente cargado
-    document.addEventListener("DOMContentLoaded", function () {
-        var elementos = document.querySelectorAll(".aparecer");
-
-        elementos.forEach(function (elemento) {
-            aplicarAnimaciones(elemento);
+        </div>
+        <div class="cuadro-dato aparecer">
+            <h3>Imagen del clima de Origen</h3>
+        </div>
+        <img id="clima-imagen-origen" class="aparecer" src="../static/images/Welcome.jpg" alt="Imagen del clima">
+        <script>
+                // Espera a que el documento HTML esté completamente cargado
+        document.addEventListener("DOMContentLoaded", function () {
+            var elementos = document.querySelectorAll(".aparecer");
+    
+            elementos.forEach(function (elemento) {
+                aplicarAnimaciones(elemento);
+            });
+    
+            // Verifica si se ha definido la variable 'descripcionDelClima' en el HTML
+            var descripcionDelClimaOrigen = "{{ descripcion_origen }}"; // Esto obtiene la descripción del clima del servidor
+    
+            if (descripcionDelClimaOrigen) {
+                // Llama a la función para asignar la imagen del clima
+                asignarImagenClima(descripcionDelClimaOrigen, "clima-imagen-origen");
+            }
         });
-
-        // Verifica si se ha definido la variable 'descripcionDelClima' en el HTML
-        var descripcionDelClima = "{{ descripcion_clima }}"; // Esto obtiene la descripción del clima del servidor
-
-        if (descripcionDelClima) {
-            // Llama a la función para asignar la imagen del clima
-            asignarImagenClima(descripcionDelClima);
-        }
-    });
-    </script>
+        </script>
+    {% endif %}
 </body>
 </html>
