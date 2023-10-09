@@ -30,7 +30,7 @@ nombres_abreviados = {
     "north carolina": ["north carolina", "charlotte-douglas", "clt"],
     "texas": ["texas", "dallas/fort worth", "dfw"],
     "guatemala city": ["guatemala city", "gua"],
-    "havana": ["havana", "hav"],
+    "habana": ["habana","havana", "hav", "cuba", "cub", "HAV", "OACI", "MUHA"],
     "houston": ["houston", "iah"],
     "queens": ["queens", "jfk"],
     "los angeles": ["lax", "los angeles"],
@@ -57,8 +57,11 @@ nombres_abreviados = {
     "ixtapa-zihuatanejo": ["zihuatanejo", "zih"],
     "zihuatanejo": ["zihuatanejo", "zih"],
     "tijuana": ["tijuana", "tij"],
+    "sonora": ["sonora", "son", "Hermosillo", "HMO"],
     "veracruz": ["veracruz", "ver", "acruz"],
-    "monterrey": ["monterrey", "mty", "mon"]
+    "monterrey": ["monterrey", "mty", "mon"],
+    "peru" : ["cuba", "per", "SPJC"],
+    "bolivia" : ["bolivia", "bol", "CBB"]
 }
 
 def encontrar_nombre_similar(entrada_usuario):

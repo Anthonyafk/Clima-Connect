@@ -7,6 +7,12 @@ function asignarImagenClima(descripcionClima) {
         case "clear sky":
             imagenURL = "../static/images/clearSky.jpg";
             break;
+        case "light rain":
+            imagenURL = "../static/images/lightRain.jpg";
+            break;
+        case "scattered clouds":
+            imagenURL = "../static/images/scatteredClouds.jpg"
+            break;
         case "few clouds":
             imagenURL = "../static/images/fewClouds.jpg";
             break;
@@ -19,7 +25,7 @@ function asignarImagenClima(descripcionClima) {
         case "rain":
             imagenURL = "../static/images/rain.jpg";
             break;
-        case "shower rain":
+        case "heavy rain":
             imagenURL = "../static/images/showerRain.jpg";
             break;
         case "thunderstorm":
