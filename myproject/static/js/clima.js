@@ -1,46 +1,52 @@
-// Función para asignar una imagen en función de la descripción del clima
-function asignarImagenClima() {
+function asignarImagenClima(descripcionClima) {
     var imagenClima = document.getElementById("clima-imagen");
-    var descripcionClima = imagenClima.getAttribute("data-atributo");
-
     var imagenURL = "";
 
     // Realiza un mapeo de la descripción del clima a una imagen específica
-    switch (descripcionClima) {
+    switch (descripcionClima.toLowerCase()) { // Convierte la descripción a minúsculas para evitar problemas de mayúsculas y minúsculas
         case "clear sky":
             imagenURL = "../static/images/clearSky.jpg";
+            break;
+        case "light rain":
+            imagenURL = "../static/images/lightRain.jpg";
+            break;
+        case "scattered clouds":
+            imagenURL = "../static/images/scatteredClouds.jpg"
             break;
         case "few clouds":
             imagenURL = "../static/images/fewClouds.jpg";
             break;
         case "overcast clouds":
-            imagenURL = "../static/images/overcastClouds.jpg"
+            imagenURL = "../static/images/overcastClouds.jpg";
             break;
         case "drizzle":
-            imagenURL = "../static/images/drizzle.jpg"
+            imagenURL = "../static/images/drizzle.jpg";
             break;
         case "rain":
-            imagenURL = "../static/images/rain.jpg"
+            imagenURL = "../static/images/rain.jpg";
             break;
-        case "shower rain":
-            imagenURL = "../static/images/showerRain"
+        case "heavy rain":
+            imagenURL = "../static/images/showerRain.jpg";
             break;
         case "thunderstorm":
-            imagenURL = "../static/images/thunderStorm"
+            imagenURL = "../static/images/thunderStorm.jpg";
             break;
         case "snow":
-            imagenURL = "../static/images/snow"
+            imagenURL = "../static/images/snow.jpg";
             break;
         case "mist":
-            imagenURL = "../static/images/mist"
+            imagenURL = "../static/images/mist.jpg";
             break;
         default:
-            console.log("Ese clima no existe pa.");
+            // Si la descripción del clima no coincide con ningún caso, muestra la imagen predeterminada
+            imagenURL = "../static/images/Welcome.jpg";
             break;
-        }
+    }
 
-    // Cambia la imagen en la página
-    imagenClima.src = imagenURL;
+    // Cambia la imagen en la página si se encontró una URL de imagen válida
+    if (imagenURL) {
+        imagenClima.src = imagenURL;
+    }
 }
 
     function aplicarAnimaciones(elemento) {

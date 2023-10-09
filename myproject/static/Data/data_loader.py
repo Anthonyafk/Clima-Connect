@@ -4,7 +4,7 @@ Importamos la biblioteca csv para trabajar con archivos CSV.
 import csv
 
 # Ruta al archivo CSV que contiene los datos.
-csv_file_path = r'Coloca aqui tu direccion de codigo'
+csv_file_path = r'/home/above37845/Documents/Modelado y Programación/Clima-Connect/myproject/static/Data/dataset2.csv'
 
 # Diccionario que almacenará los datos del archivo CSV.
 data = {}
