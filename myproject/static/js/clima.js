@@ -1,9 +1,15 @@
-function asignarImagenClima(descripcionClima) {
-    var imagenClima = document.getElementById("clima-imagen");
+/**
+ * Asigna una imagen correspondiente a la descripción del clima a un elemento HTML.
+ * 
+ * @param {string} descripcionClima - Descripción textual del clima.
+ * @param {string} idImagen - ID del elemento HTML al que se asignará la imagen.
+ */
+function asignarImagenClima(descripcionClima, idImagen) {
+    var imagenClima = document.getElementById(idImagen); // Obtiene el elemento usando el ID proporcionado.
     var imagenURL = "";
 
-    // Realiza un mapeo de la descripción del clima a una imagen específica
-    switch (descripcionClima.toLowerCase()) { // Convierte la descripción a minúsculas para evitar problemas de mayúsculas y minúsculas
+    // Mapea la descripción del clima a una URL de imagen específica.
+    switch (descripcionClima.toLowerCase()) {
         case "clear sky":
             imagenURL = "../static/images/clearSky.jpg";
             break;
@@ -37,29 +43,39 @@ function asignarImagenClima(descripcionClima) {
         case "mist":
             imagenURL = "../static/images/mist.jpg";
             break;
+        case "broken clouds":
+            imagenURL = "../static/images/broken-clouds.jpg";
+            break;
+        case "moderate rain":
+            imagenURL = "../static/images/moderate-rain.jpg";
+            break;
         default:
             // Si la descripción del clima no coincide con ningún caso, muestra la imagen predeterminada
             imagenURL = "../static/images/Welcome.jpg";
             break;
     }
 
-    // Cambia la imagen en la página si se encontró una URL de imagen válida
-    if (imagenURL) {
-        imagenClima.src = imagenURL;
-    }
+    // Asigna la imagen al elemento con el id proporcionado
+    imagenClima.src = imagenURL;
 }
 
+
+    /**
+ * Aplica una animación de aparición a un elemento HTML.
+ * 
+ * @param {HTMLElement} elemento - Elemento al que se aplicará la animación.
+ */
     function aplicarAnimaciones(elemento) {
-        // Elimina la clase "aparecer" para reiniciar la animación
-        elemento.classList.remove("aparecer");
+    // Reinicia la animación eliminando la clase "aparecer".
+    elemento.classList.remove("aparecer");
 
-        // Aplica la clase "aparecer" para activar la animación
-        elemento.classList.add("aparecer");
+    // Activa la animación añadiendo la clase "aparecer".
+    elemento.classList.add("aparecer");
 
-        // Después de un breve retraso, agrega las propiedades de animación
-        setTimeout(function () {
-            elemento.style.opacity = 1;
-            elemento.style.transform = "translateY(0)";
-        }, 100); // Ajusta el tiempo de retraso según sea necesario
-    }
+    // Después de un breve retraso, aplica las propiedades de animación.
+    setTimeout(function () {
+        elemento.style.opacity = 1;
+        elemento.style.transform = "translateY(0)";
+    }, 100); // Duración del retraso antes de aplicar las propiedades de animación.
+}
     
